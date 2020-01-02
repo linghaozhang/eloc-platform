@@ -102,7 +102,7 @@
         this.selectedRows = selectedRows
       },
       createTask() {
-        routeCompReplace('createTask');
+        routeCompReplace('taskDetail');
       },
       loadTable() {
         this.loading = true;
@@ -137,7 +137,7 @@
             }
           case '3':
             return {
-              text: '执行中',
+              text: '已执行',
               state: 'default'
             }
           default:

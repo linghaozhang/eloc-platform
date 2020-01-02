@@ -33,9 +33,9 @@ const routes = [
       name: 'specialService',
     },
       {
-        path: '/createTask',
-        name: 'createTask',
-        component: () => import('pages/specialService/createTask'),
+        path: '/taskDetail',
+        name: 'taskDetail',
+        component: () => import('pages/specialService/taskDetail'),
       }
     ]
   },

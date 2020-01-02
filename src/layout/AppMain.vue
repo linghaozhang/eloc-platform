@@ -101,7 +101,7 @@
       systemLog: () => import('pages/systemLog'),
       roadTopology: () => import('pages/roadTopology'),
       systemConfiguration: () => import('pages/systemConfiguration'),
-      createTask: () => import('pages/specialService/createTask'),
+      taskDetail: () => import('pages/specialService/taskDetail'),
     },
     computed: {
       ...mapGetters([

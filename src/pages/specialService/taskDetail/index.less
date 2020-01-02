@@ -1,0 +1,31 @@
+.taskDetail{
+  background-color:#f0f2f5;
+  height:100%;
+  &-form {
+    background-color:#fff;
+    width: 100%;
+    padding:20px 30px;
+    box-sizing: border-box;
+    height:80px;
+  }
+  &-list{
+    height:calc( ~ '100% - 120px');
+    max-height:calc( ~ '100% - 120px');
+    width: calc( ~'100% - 40px');
+    margin:20px auto 0;
+    background-color:#fff;
+    padding:15px;
+    box-sizing: border-box;
+    overflow-y:auto;
+    &-title{
+      color:#333;
+      font-size:15px;
+      margin-bottom:20px;
+    }
+    &-warp{
+      .ant-checkbox-group{
+        width:100%;
+      }
+    }
+  }
+}
