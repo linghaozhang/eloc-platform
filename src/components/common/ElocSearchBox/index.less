@@ -1,0 +1,66 @@
+.eloc-search-box{
+  &-form{
+    border-radius: 4px;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.35);
+    position:relative;
+    &-input{
+      vertical-align:bottom;
+      width:80%;
+      input{
+        border-top-right-radius:0;
+        border-bottom-right-radius:0;
+        font-size:14px;
+        border-color:#fff;
+        &:focus{
+          border-color: #2A60FC;
+          outline: 0;
+        }
+      }
+    }
+    &-btn{
+      width:20%;
+      border-top-left-radius:0;
+      border-bottom-left-radius:0;
+    }
+    &-clear{
+      position:absolute;
+      right:80px;
+      top:12px;
+      cursor: pointer;
+      font-size:16px;
+      &:hover{
+        color:#333;
+      }
+    }
+  }
+  &-tree{
+    background-color:#fff;
+    margin-top:10px;
+    border-radius: 4px;
+    color: #333333;
+    border:1px solid #ddd;
+    box-shadow: 1px 1px 20px 2px rgba(238,238,238,.5);
+    //overflow-y:auto;
+    max-height:350px;
+    padding:10px 10px;
+    box-sizing: border-box;
+    .custom-tree-node{
+      display:flex;
+      align-items: center;
+      justify-content: flex-start;
+      &-img{
+        width:15px;
+        margin-right:10px;
+      }
+    }
+    .el-tree>.el-tree-node{
+      margin-bottom:10px;
+    }
+  }
+  .eloc-search-box-slide-enter-active, .eloc-search-box-slide-leave-active {
+    transition: all .3s;
+  }
+  .eloc-search-box-slide-enter, .eloc-search-box-slide-leave-to {
+    opacity: 0;
+  }
+}
