@@ -48,7 +48,9 @@
       <div class="taskDetail-list-title">任务路线列表</div>
       <div class="taskDetail-list-warp">
         <a-checkbox-group v-model="lineCheck" @change="onLineChange">
-          <road-map />
+          <road-map
+                  :vipTaskData="vipTaskData"
+          />
         </a-checkbox-group>
       </div>
     </div>
@@ -57,6 +59,8 @@
 <script>
   import moment from 'moment'
   import RoadMap from 'components/specialService/RoadMap'
+  import {getRouteCompParams} from 'utils/utils'
+  import {getVipTaskById} from 'api/specialService'
 
   export default {
     data() {
@@ -73,17 +77,28 @@
           {label: '创建新线路', value: '1'},
           {label: '选择已有线路', value: '2'},
         ],
-        lineCheck: []
+        lineCheck: [],
+        vipTaskData: {}
       }
     },
+
     components: {
       RoadMap
+    },
+    mounted() {
+      this.getLineDetailById()
     },
     methods: {
       moment,
       onLineChange(v) {
         console.log(v)
       },
+      getLineDetailById() {
+        const id = getRouteCompParams()[0];
+        getVipTaskById({vipId: id}).then(res => {
+          this.vipTaskData = res.msg.vipLine
+        })
+      }
     }
   }
 </script>

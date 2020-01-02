@@ -300,6 +300,17 @@ export const transferOperationDesc = (code) => {
       return '解除禁止现场手动';
   }
 };
+// special service switch level
+export const switchLineLevel = (n) => {
+  switch (n) {
+    case '1' :
+      return '一级';
+    case '2' :
+      return '二级';
+    case '3' :
+      return '三级';
+  }
+};
 
 // special service add rowspan count
 export const addRowSpanCount = (data) => {

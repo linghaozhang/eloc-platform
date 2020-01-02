@@ -1,14 +1,14 @@
 <template>
   <div class="road-map">
-    <div>
-      <a-checkbox value="1">
+    <div v-for="i in vipTaskData" :key="i.lineId">
+      <a-checkbox :value="i.lineId">
       </a-checkbox>
       <div class="road-map-item">
         <a-form layout="inline" class="road-map-item-form">
           <a-form-item label="路线名称">
             <a-input
                     style="width:160px"
-                    value="vipName"
+                    :value="i.lineName"
                     readonly
                     size="small"
             />
@@ -16,7 +16,7 @@
           <a-form-item label="路线级别">
             <a-input
                     style="width:160px"
-                    value="一级"
+                    :value="switchLineLevel(i.lineLevel)"
                     size="small"
                     readonly
             />
@@ -24,7 +24,7 @@
           <a-form-item label="路线长度">
             <a-input
                     style="width:160px"
-                    value="500m"
+                    :value="i.lineLength + 'm'"
                     readonly
                     size="small"
             />
@@ -33,37 +33,28 @@
             <a-input
                     size="small"
                     style="width:160px"
-                    value="2019-12-31 00:00:00"
+                    :value="i.startTime"
                     readonly
             />
           </a-form-item>
         </a-form>
         <div class="road-map-line-container-fixed">
-          <div class="road-map-line-container" >
-            <div class="road-map-line">
-              <div class="road-map-line-cross" @click.stop="handleClick">
-                <div class="se-flag">
-                  <a-badge status="success" />
+          <div class="road-map-line-container">
+            <div
+              v-for="(item, n) in i.lineDetails"
+              class="road-map-line"
+              :key="item.crossNo"
+            >
+              <div class="road-map-line-cross" @click="lineCrossClick(item.crossNo)">
+                <div class="se-flag" v-if="n===0 || n===i.lineDetails.length-1">
+                  <a-badge :status="n===0?'success':'error'"/>
                 </div>
               </div>
-              <div class="road-map-line-road">
-                <span>500m</span>
+              <div class="road-map-line-road" v-if="n!==i.lineDetails.length-1">
+                <span>{{item.crossSpacing}}m</span>
               </div>
               <div class="road-map-label">
-                1006-津港公路与外环南路交口
-              </div>
-            </div>
-            <div class="road-map-line">
-              <div class="road-map-line-cross">
-                <div class="se-flag">
-                  <a-badge status="success" />
-                </div>
-              </div>
-              <div class="road-map-line-road">
-                <span>500m</span>
-              </div>
-              <div class="road-map-label">
-                1006-津港公路与外环南路交口
+                {{item.crossName}}
               </div>
             </div>
           </div>
@@ -73,10 +64,18 @@
   </div>
 </template>
 <script>
+  import {switchLineLevel} from 'utils/utils'
   export default {
-    methods:{
-      handleClick(e){
-        e.stopPropagation();
+    props: {
+      vipTaskData: {
+        type: Array,
+        required: true
+      }
+    },
+    methods: {
+      switchLineLevel,
+      lineCrossClick(crossNo) {
+        console.log(crossNo)
       }
     }
   }

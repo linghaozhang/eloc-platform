@@ -41,7 +41,7 @@
     <div class="specialService-table">
       <div class="specialService-table-btns">
         <a-button icon="delete" type="danger">批量删除</a-button>
-        <a-button icon="edit">编辑</a-button>
+        <a-button icon="edit" @click="edit">编辑</a-button>
         <a-button type="primary" icon="plus" @click="createTask">新建</a-button>
       </div>
       <a-table
@@ -122,6 +122,11 @@
         this.vipLevel = undefined;
         this.vipName = '';
         this.rangePickerValue = [];
+      },
+      edit(){
+        console.log(this.selectedRows)
+        const ids = [this.selectedRows[0].vipId]
+        routeCompReplace('taskDetail',ids);
       },
       transformState(record) {
         switch (record.lineState) {
