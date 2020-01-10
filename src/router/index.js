@@ -35,7 +35,10 @@ const routes = [
       {
         path: '/taskDetail',
         name: 'taskDetail',
-        component: () => import('pages/specialService/taskDetail'),
+      },
+      {
+        path: '/performTask',
+        name: 'performTask',
       }
     ]
   },
@@ -76,12 +79,18 @@ const routes = [
     path: '/log',
     component: AppMain,
     redirect: '/log',
-    children: [{
-      path: '/log',
-      name: 'log',
-      component: () => import('pages/log'),
-      meta: {title: 'log'}
-    }]
+    children: [
+      {
+        path: '/log',
+        name: 'log',
+        // component: () => import('pages/log'),
+      },
+      {
+        path: '/logDetail',
+        name: 'logDetail',
+        // component: () => import('pages/log/logDetail'),
+      }
+    ]
   },
   {//路口工作台（基础版）
     path: '/baseIntersectionWorkbench',

@@ -21,3 +21,5 @@ export const initSocketClient = () => {
 // 添加socket订阅
 export const addSocketSubscribe = (subscribeUrl, cb) => window.rabbitmq.main.subscribe(subscribeUrl, cb);
 
+// 获取路口状态
+export const getCrossList = () => http.post('/home/getCrossList')

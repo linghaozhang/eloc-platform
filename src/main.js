@@ -2,6 +2,18 @@ import Vue from 'vue'
 import App from './App'
 import router from 'router'
 import store from 'store'
+import ECharts from 'vue-echarts'
+import 'echarts/lib/chart/custom'
+
+
+
+import 'echarts/lib/component/gridSimple'
+import 'echarts/lib/component/legend'
+import 'echarts/lib/component/legendScroll'
+import 'echarts/lib/component/toolbox'
+import 'echarts/lib/component/tooltip'
+
+
 import {
   Button,
   Menu,
@@ -22,6 +34,8 @@ import {
   Checkbox,
   DatePicker,
   LocaleProvider,
+  Empty,
+  Switch
 } from 'ant-design-vue';
 
 import {
@@ -38,10 +52,13 @@ Vue.component(Button.Group.name, Button.Group);
 Vue.component(Radio.Group.name, Radio.Group);
 Vue.component(Checkbox.Group.name, Checkbox.Group);
 Vue.component(Input.TextArea.name, Input.TextArea);
+Vue.component('v-chart', ECharts);
 Vue.component(DatePicker.RangePicker.name, DatePicker.RangePicker);
 Vue.use(Menu);
+Vue.use(Switch);
 Vue.use(LocaleProvider);
 Vue.use(Icon);
+Vue.use(Empty);
 Vue.use(Radio);
 Vue.use(Checkbox);
 Vue.use(Modal);

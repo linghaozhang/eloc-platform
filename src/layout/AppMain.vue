@@ -46,7 +46,7 @@
       <div class="eloc-content" id="eloc-content">
         <top-bar/>
         <div class="eloc-content-tabs">
-          <a-tabs animated hideAdd v-model="activeKey" type="editable-card" @edit="onEdit">
+          <a-tabs animated hideAdd v-model="activeKey" type="editable-card" @edit="onEdit" @change="onChange">
             <a-tab-pane v-for="pane in panes" :tab="pane.title" :key="pane.key" :closable="pane.closable">
               <keep-alive>
                 <div class="eloc-tabs-container">
@@ -92,6 +92,7 @@
       schemeCustomization: () => import('pages/schemeCustomization'),
       subareaScheme: () => import('pages/subareaScheme'),
       log: () => import('pages/log'),
+      logDetail: () => import('pages/log/logDetail'),
       baseIntersectionWorkbench: () => import('pages/baseIntersectionWorkbench'),
       trunkLineCoordinate: () => import('pages/trunkLineCoordinate'),
       ODSituation: () => import('pages/odSituation'),
@@ -102,6 +103,7 @@
       roadTopology: () => import('pages/roadTopology'),
       systemConfiguration: () => import('pages/systemConfiguration'),
       taskDetail: () => import('pages/specialService/taskDetail'),
+      performTask: () => import('pages/specialService/performTask'),
     },
     computed: {
       ...mapGetters([
@@ -157,6 +159,9 @@
       },
       tabMenuClick(e) {
         if (e.key === "1") {
+          if (this.panes.length === 1) {
+            return this.$message.error('已经是最后一页了')
+          }
           this.$store.dispatch('appMain/createPanes', {panes: [createNewTabData(this.activeKey.split('_')[0])]});
           const key = this.activeKey.split('_')[0];
           this.activeKey = key;
@@ -165,6 +170,9 @@
       },
       onEdit(targetKey, action) {
         this[action](targetKey);
+      },
+      onChange(activeKey){
+        this.$store.dispatch('appMain/toggleActiveKey', {key:activeKey});
       },
       remove(targetKey) {
         if (this.panes.length === 1) {

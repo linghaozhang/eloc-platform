@@ -311,13 +311,43 @@ export const switchLineLevel = (n) => {
       return '三级';
   }
 };
-
+export const getCrossType = (data,showText = false) => {
+  var msg = "";
+  switch (data) {
+    case "0" :
+      if(showText){
+        msg = "无";
+      }else{
+        msg=''
+      }
+      break;
+    case "1" :
+      msg = "公交优先";
+      break;
+    case "5" :
+      msg = "反溢控制";
+      break;
+    case "6" :
+      msg = "排队控制";
+      break;
+    case "2" :
+      msg = "行人过街";
+      break;
+    case "7" :
+      msg = "紧急控制";
+      break;
+    case "" :
+      msg = "";
+      break;
+  }
+  return msg;
+};
 // special service add rowspan count
 export const addRowSpanCount = (data) => {
   if (data.length === 1) {
     data[0].rowspan = 1
   }
-  let curId, rowSpanCount = 1;
+  let curId, rowSpanCount = 1, compareLast = false;
   for (let i = 0; i < data.length; i++) {
     curId = data[i].vipId;
     for (let ii = i + 1; ii < data.length; ii++) {
@@ -327,6 +357,7 @@ export const addRowSpanCount = (data) => {
           data[i].rowspan = rowSpanCount;
           i = ii - 1;
           rowSpanCount = 1;
+          compareLast = true
         }
       } else {
         data[i].rowspan = rowSpanCount;
@@ -334,6 +365,9 @@ export const addRowSpanCount = (data) => {
         rowSpanCount = 1;
         break
       }
+    }
+    if (i + 1 === data.length && !compareLast) {
+      data[i].rowspan = 1
     }
   }
   return data

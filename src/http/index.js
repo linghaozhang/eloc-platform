@@ -57,7 +57,7 @@ http.interceptors.response.use(
       data = data.substring(1, data.length - 3);
       window.location.href = data
     } else {
-      if (typeof data === 'string') {
+      if (typeof data === 'string'&& (data.startsWith('{') || data.startsWith('['))) {
         data = JSON.parse(data);
       }
       if(data.code && data.code !== 0) {
