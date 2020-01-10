@@ -64,13 +64,6 @@
   export default {
 
     data() {
-      let data = []
-
-      for (let i = 0; i <= 360; i++) {
-        let t = i / 180 * Math.PI
-        let r = Math.sin(2 * t) * Math.cos(2 * t)
-        data.push([r, i])
-      }
       return {
         columns: columns,
         crossName: '',
@@ -94,7 +87,6 @@
         const params = getRouteCompParams();
         this.crossName = params.crossName;
         this.params = params
-        console.log(params)
         this.loadTable();
       },
       loadTable() {

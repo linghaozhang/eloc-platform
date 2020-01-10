@@ -1,89 +1,88 @@
-.elocLog-detail{
-
-  background-color:#f0f2f5;
-  height:100%;
-  &-title{
-    background-color:#fff;
+.elocLog-detail {
+  background-color: #f0f2f5;
+  height: 100%;
+  &-title {
+    background-color: #fff;
     width: 100%;
-    padding:10px 30px;
+    padding: 10px 30px;
     box-sizing: border-box;
-    color:#333;
+    color: #333;
     font-size: 16px;
-    height:50px;
+    height: 50px;
   }
-  &-content{
-    background-color:#fff;
-    height:calc( ~ '100% - 90px');
-    width: calc( ~'100% - 40px');
-    margin:20px auto 0;
-    .elocLog-detail-tableChart-top{
-      display:flex;
+  &-content {
+    background-color: #fff;
+    height: calc(~"100% - 90px");
+    width: calc(~"100% - 40px");
+    margin: 20px auto 0;
+    .elocLog-detail-tableChart-top {
+      display: flex;
       justify-content: space-between;
       align-items: center;
-      padding:10px 20px;
-      span{
+      padding: 10px 20px;
+      span {
         font-size: 14px;
-        color:#333;
+        color: #333;
       }
-      .tableChart-top-group{
-        display:flex;
+      .tableChart-top-group {
+        display: flex;
         justify-content: space-around;
         align-items: center;
-        button{
-          width:30px;
-          height:30px;
-          display:flex;
+        button {
+          width: 30px;
+          height: 30px;
+          display: flex;
           justify-content: center;
           align-items: center;
         }
       }
     }
-    &-table{
-      padding:10px 20px;
-      .ant-table-thead{
-        tr th{
-          background-color:#2A60FC;
-          color:#fff;
+    &-table {
+      padding: 10px 20px;
+      .ant-table-thead {
+        tr th {
+          background-color: #2a60fc;
+          color: #fff;
         }
       }
-      .ant-table-tbody{
-        tr:nth-child(2n){
-          background-color:#f0f2f5;
+      .ant-table-tbody {
+        tr:nth-child(2n) {
+          background-color: #f0f2f5;
         }
       }
     }
-    &-chart{
-      padding:10px 20px;
-      height:calc(~'100% - 50px');
+    &-chart {
+      padding: 10px 20px;
+      height: calc(~"100% - 50px");
       .echarts {
         width: 100%;
         height: 100%;
       }
-      .tips-title{
+      .tips-title {
         padding: 0 0 5px 0;
         color: #33445d;
         font-weight: bold;
       }
-      .table-color{
+      .table-color {
         background-color: #f7f7f7;
         //border: 1px solid #dce4ee;
-        border-left:1px solid #dce4ee;
-        border-top:1px solid #dce4ee;
-        border-right:1px solid #dce4ee;
+        border-left: 1px solid #dce4ee;
+        border-top: 1px solid #dce4ee;
+        border-right: 1px solid #dce4ee;
         text-align: center;
         width: 120px;
         float: left;
         color: #33445d;
-        padding: 1px 0 ;
+        padding: 1px 0;
       }
-      .table-content{
-        border-left:1px solid #dce4ee;
-        border-top:1px solid #dce4ee;
-        border-right:1px solid #dce4ee;
+      .table-content {
+        border-left: 1px solid #dce4ee;
+        border-top: 1px solid #dce4ee;
+        border-right: 1px solid #dce4ee;
         text-align: center;
         width: 420px;
         color: #33445d;
-        padding: 1px 0 ;
+        padding: 1px 0;
       }
     }
   }

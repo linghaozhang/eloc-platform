@@ -1,4 +1,4 @@
-import {getCrossControlMode, getCrossType} from 'utils/utils'
+import { getCrossControlMode, getCrossType } from "utils/utils";
 
 function renderItem(params, api) {
   var yValue = api.value(2);
@@ -6,7 +6,7 @@ function renderItem(params, api) {
   var size = api.size([api.value(1) - api.value(0), yValue]);
   var style = api.style();
   return {
-    type: 'rect',
+    type: "rect",
     shape: {
       x: start[0],
       y: start[1],
@@ -17,15 +17,15 @@ function renderItem(params, api) {
   };
 }
 
-export const options = (log) => ({
+export const options = log => ({
   tooltip: {
     show: true,
-    backgroundColor: '#ffffff',
-    textStyle: {color: '#000'},
+    backgroundColor: "#ffffff",
+    textStyle: { color: "#000" },
     padding: [5, 10, 10, 10],
-    extraCssText: 'box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.137254901960784);',
-    formatter: function (params) {
-      const {dataIndex} = params;
+    extraCssText: "box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.137254901960784);",
+    formatter: function(params) {
+      const { dataIndex } = params;
       let html = `
               <div class="tips-title">详情：</div>
               <div>
@@ -38,15 +38,22 @@ export const options = (log) => ({
               </div>
               <div>
                 <div class="table-color">运行时段</div>
-                <div class="table-content">${params.data[0] + '—' + params.data[1]}</div>
+                <div class="table-content">${params.data[0] +
+                  "—" +
+                  params.data[1]}</div>
               </div>
               <div>
                 <div class="table-color">路口状态</div>
-                <div class="table-content">${getCrossControlMode(log[dataIndex].controlMode)}</div>
+                <div class="table-content">${getCrossControlMode(
+                  log[dataIndex].controlMode
+                )}</div>
               </div>
               <div>
                 <div class="table-color">特殊控制状态</div>
-                <div class="table-content">${getCrossType(log[dataIndex].controlType,true)}</div>
+                <div class="table-content">${getCrossType(
+                  log[dataIndex].controlType,
+                  true
+                )}</div>
               </div>
               <div>
                 <div class="table-color">初始子区</div>
@@ -61,9 +68,15 @@ export const options = (log) => ({
                   <div class="table-color">&nbsp;</div>
                   <div class="table-content">
                     <span>${log[dataIndex].phasePlan[i].split(" ")[0]}</span>
-                    <span style="color: #4bcf4e;">${log[dataIndex].phasePlan[i].split(" ")[1]}</span>
-                    <span style="color: #bed04d;">${log[dataIndex].phasePlan[i].split(" ")[2]}</span>
-                    <span style="color: #f84a4d;">${log[dataIndex].phasePlan[i].split(" ")[3]}</span>
+                    <span style="color: #4bcf4e;">${
+                      log[dataIndex].phasePlan[i].split(" ")[1]
+                    }</span>
+                    <span style="color: #bed04d;">${
+                      log[dataIndex].phasePlan[i].split(" ")[2]
+                    }</span>
+                    <span style="color: #f84a4d;">${
+                      log[dataIndex].phasePlan[i].split(" ")[3]
+                    }</span>
                   </div>
                  </div>
         `;
@@ -71,16 +84,20 @@ export const options = (log) => ({
       if (log[dataIndex].connectCross.length !== 0) {
         html += `<div>
                   <div class="table-color">&nbsp;</div>
-                  <div class="table-content">${log[dataIndex].crossId + '' + log[dataIndex].connectCross + '' + log[dataIndex].offset }</div>
-                 </div>`
+                  <div class="table-content">${log[dataIndex].crossId +
+                    "" +
+                    log[dataIndex].connectCross +
+                    "" +
+                    log[dataIndex].offset}</div>
+                 </div>`;
       }
       return html;
     }
   },
   xAxis: {
-    name:'d',
+    name: "d",
     show: true,
-    type: 'time',
+    type: "time",
     scale: true
   },
   legend: {
@@ -88,21 +105,21 @@ export const options = (log) => ({
     selectedMode: false //取消图例上的点击事件
   },
   yAxis: {
-    name: 's',
-    nameGap: '6',
+    name: "s",
+    nameGap: "6",
     show: true,
-    nameTextStyle: {fontSize: 16}
+    nameTextStyle: { fontSize: 16 }
   },
   series: [
     {
-      name: 'A',
-      type: 'custom',
+      name: "A",
+      type: "custom",
       renderItem,
       zlevel: 16,
       itemStyle: {
-        color: '#FD9D3D'
+        color: "#FD9D3D"
       },
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -112,11 +129,11 @@ export const options = (log) => ({
       data: []
     },
     {
-      name: 'B',
-      type: 'custom',
+      name: "B",
+      type: "custom",
       renderItem,
       zlevel: 15,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -124,16 +141,16 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#FDD42C'
+        color: "#FDD42C"
       },
       data: []
     },
     {
-      name: 'C',
-      type: 'custom',
+      name: "C",
+      type: "custom",
       renderItem,
       zlevel: 14,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -141,16 +158,16 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#B1D538'
+        color: "#B1D538"
       },
       data: []
     },
     {
-      name: 'D',
-      type: 'custom',
+      name: "D",
+      type: "custom",
       renderItem,
       zlevel: 13,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -158,16 +175,16 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#51C8C4'
+        color: "#51C8C4"
       },
       data: []
     },
     {
-      name: 'E',
-      type: 'custom',
+      name: "E",
+      type: "custom",
       renderItem,
       zlevel: 12,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -175,16 +192,16 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#61a8db'
+        color: "#61a8db"
       },
       data: []
     },
     {
-      name: 'F',
-      type: 'custom',
+      name: "F",
+      type: "custom",
       renderItem,
       zlevel: 11,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -192,16 +209,16 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#9c5ed0'
+        color: "#9c5ed0"
       },
       data: []
     },
     {
-      name: 'G',
-      type: 'custom',
+      name: "G",
+      type: "custom",
       renderItem,
       zlevel: 10,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -209,16 +226,16 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#c856c4'
+        color: "#c856c4"
       },
       data: []
     },
     {
-      name: 'H',
-      type: 'custom',
+      name: "H",
+      type: "custom",
       renderItem,
       zlevel: 9,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -226,16 +243,16 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#fb7272'
+        color: "#fb7272"
       },
       data: []
     },
     {
-      name: 'I',
-      type: 'custom',
+      name: "I",
+      type: "custom",
       renderItem,
       zlevel: 8,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -243,16 +260,16 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#fb79a7'
+        color: "#fb79a7"
       },
       data: []
     },
     {
-      name: 'J',
-      type: 'custom',
+      name: "J",
+      type: "custom",
       renderItem,
       zlevel: 7,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -260,16 +277,16 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#f5e48c'
+        color: "#f5e48c"
       },
       data: []
     },
     {
-      name: 'K',
-      type: 'custom',
+      name: "K",
+      type: "custom",
       renderItem,
       zlevel: 6,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -277,16 +294,16 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#80ebeb'
+        color: "#80ebeb"
       },
       data: []
     },
     {
-      name: 'L',
-      type: 'custom',
+      name: "L",
+      type: "custom",
       renderItem,
       zlevel: 5,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -294,16 +311,16 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#55eec3'
+        color: "#55eec3"
       },
       data: []
     },
     {
-      name: 'M',
-      type: 'custom',
+      name: "M",
+      type: "custom",
       renderItem,
       zlevel: 4,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -311,16 +328,16 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#74b9ff'
+        color: "#74b9ff"
       },
       data: []
     },
     {
-      name: 'N',
-      type: 'custom',
+      name: "N",
+      type: "custom",
       renderItem,
       zlevel: 3,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -328,16 +345,16 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#a19afd'
+        color: "#a19afd"
       },
       data: []
     },
     {
-      name: 'O',
-      type: 'custom',
+      name: "O",
+      type: "custom",
       renderItem,
       zlevel: 2,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -345,16 +362,16 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#e07055'
+        color: "#e07055"
       },
       data: []
     },
     {
-      name: 'P',
-      type: 'custom',
+      name: "P",
+      type: "custom",
       renderItem,
       zlevel: 1,
-      dimensions: ['from', 'to', 'profit'],
+      dimensions: ["from", "to", "profit"],
       encode: {
         x: [0, 1],
         y: 2,
@@ -362,7 +379,7 @@ export const options = (log) => ({
         itemName: 3
       },
       itemStyle: {
-        color: '#fab1a0'
+        color: "#fab1a0"
       },
       data: []
     }
