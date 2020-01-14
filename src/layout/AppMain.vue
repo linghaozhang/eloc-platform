@@ -78,7 +78,6 @@
   export default {
     data() {
       return {
-//        panes: [],
         activeKey: 'homePage',
         locale: zhCN
       }
@@ -101,6 +100,7 @@
       pointEquipment: () => import('pages/pointEquipment'),
       systemLog: () => import('pages/systemLog'),
       roadTopology: () => import('pages/roadTopology'),
+      baseRoadTopology: () => import('pages/baseRoadTopology'),
       systemConfiguration: () => import('pages/systemConfiguration'),
       taskDetail: () => import('pages/specialService/taskDetail'),
       performTask: () => import('pages/specialService/performTask'),
@@ -133,8 +133,8 @@
         const panes = [...this.panes];
         let newTab = createNewTabData(e.key);
         if (multiTaskList.indexOf(e.key) !== -1) {
-//          如果在重复添加列表  multiTaskList可重复添加为tab的列表
-//          生成唯一key值防止重复
+//          如果在重复添加列表  生成唯一key值防止重复
+//          multiTaskList可重复添加为tab的列表
           newTab.key = newTab.key + '_' + this.panes.length;
           panes.push(newTab);
           panes.forEach((i, n) => i.index = n);

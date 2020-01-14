@@ -65,6 +65,7 @@
 import moment from "moment";
 import columns from "./columns";
 import { getWarnLogData, exportWarnExcel } from "api/systemLog";
+import {downloadFile} from 'utils/utils'
 export default {
   data() {
     return {
@@ -168,17 +169,8 @@ export default {
         warningKind: this.warningKind || "",
         crossId: this.crossId
       };
-      exportWarnExcel(params).then(res => {
-        const blob = new Blob([res]);
-        const downloadElement = document.createElement("a");
-        downloadElement.style.display = "none";
-        const href = window.URL.createObjectURL(blob); //创建下载的链接
-        downloadElement.href = href;
-        downloadElement.download = "告警日志.xlsx"; //下载后文件名
-        document.body.appendChild(downloadElement);
-        downloadElement.click(); //点击下载
-        document.body.removeChild(downloadElement); //下载完成移除元素
-        window.URL.revokeObjectURL(href); //释放掉blob对象
+      exportWarnExcel(params).then(stream => {
+        downloadFile("告警日志.xlsx",stream);
       });
     }
   }

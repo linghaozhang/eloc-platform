@@ -180,6 +180,16 @@ const routes = [
       meta: {title: 'roadTopology'}
     }]
   },
+  {//路网拓扑
+    path: '/baseRoadTopology',
+    component: AppMain,
+    redirect: '/baseRoadTopology',
+    children: [{
+      path: '/baseRoadTopology',
+      name: 'baseRoadTopology',
+      component: () => import('pages/baseRoadTopology'),
+    }]
+  },
   {//系统设置
     path: '/systemConfiguration',
     component: AppMain,

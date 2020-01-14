@@ -42,7 +42,6 @@
         if (!this.registerState) {
           this.registerState = true;
           map.addEventListener('dblclick',  (e)=>{
-            console.log(e);
             if(e.target.nodeName === 'path'){
               this.$emit('mapDbClick');
             }

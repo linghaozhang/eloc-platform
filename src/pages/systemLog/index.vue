@@ -15,10 +15,6 @@ import warnLog from "./warnLog"
 import operationLog from "./operationLog"
 export default {
   name: "systemLog",
-  data() {
-    return {
-    };
-  },
   methods: {
   },
   components: {

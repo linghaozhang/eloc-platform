@@ -1,0 +1,91 @@
+.elocSelect {
+  display: inline-block;
+  min-width: 280px;
+  position: relative;
+  margin-right:16px;
+  &-label {
+    display: inline-block;
+    width: 70px;
+    color:rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+  }
+  &-input-wrapper{
+    display:inline-block;
+    position:relative;
+    height:32px;
+    i{
+      position:absolute;
+      top:13px;
+      right:10px;
+      transition: all .3s;
+    }
+    .eloc-select-icon-down{
+      transform: rotate(0deg);
+    }
+    .eloc-select-icon-up{
+      transform: rotate(180deg);
+    }
+  }
+  &-input {
+    transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    outline: none;
+    height: 32px;
+    line-height: 32px;
+    padding-right: 25px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    width: 280px;
+    cursor: pointer;
+    &::-webkit-input-placeholder { /* WebKit browsers */
+      color: #bfbfbf;
+    }
+    &:focus {
+      border-color: #2a60fc;
+    }
+  }
+  &-tree {
+    width: 280px;
+    background-color: #fff;
+    position: absolute;
+    right: 0px;
+    top: 37px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    border: 1px solid #d2d2d2;
+    border-radius: 4px;
+    padding: 10px;
+    z-index:999;
+  }
+  .eloc-select-tree-enter-active,
+  .eloc-select-tree-leave-active {
+    transition: all 0.3s;
+  }
+  .eloc-select-tree-enter,
+  .eloc-select-tree-leave-to {
+    opacity: 0;
+  }
+  .eloc-zoom-in-top-enter-active,
+  .eloc-zoom-in-top-leave-active {
+    opacity: 1;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transition: opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+      -webkit-transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+      -webkit-transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+      opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+      opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+      -webkit-transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    -webkit-transform-origin: center top;
+    transform-origin: center top;
+  }
+  .eloc-zoom-in-top-enter,
+  .eloc-zoom-in-top-leave-to {
+    opacity: 0;
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+}

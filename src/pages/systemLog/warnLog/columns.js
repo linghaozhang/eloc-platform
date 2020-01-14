@@ -1,15 +1,19 @@
+import moment from 'moment'
+
 const columns = [
   {
     title: '序号',
     dataIndex: 'count',
     key: 'count',
-    width:'12%'
+    width:'12%',
+    sorter:(a, b) => a.count - b.count
   },
   {
     title: '告警时间',
     dataIndex: 'logDate',
     key: 'logDate',
-    width:'12%'
+    width:'12%',
+    sorter:(a, b) => moment(a.logDate).valueOf() - moment(b.logDate).valueOf(),
   },
   {
     title: '告警类型',
