@@ -1,7 +1,7 @@
 # eloc-platform
 
 ## 关于项目
-项目基于 [vue-cli](https://cli.vuejs.org/zh/guide/) 搭建，底层框架为 [Vue](https://cn.vuejs.org/) + Webpack，通过 [Vue Router](https://router.vuejs.org/zh/) 关联history和page（组件），实现页面跳转。引入[VueX](https://vuex.vuejs.org/)作为数据管理(状态管理)工具，并使用 [ES6](http://es6.ruanyifeng.com/) + [Less](http://lesscss.cn/) 作为开发语言。
+项目基于 [vue-cli](https://cli.vuejs.org/zh/guide/) 搭建，底层框架为 [Vue](https://cn.vuejs.org/) + [Webpack](https://www.webpackjs.com/)，通过 [Vue Router](https://router.vuejs.org/zh/) 关联history和page（组件），实现页面跳转。引入[VueX](https://vuex.vuejs.org/)作为数据管理(状态管理)工具，并使用 [ES6](http://es6.ruanyifeng.com/) + [Less](http://lesscss.cn/) 作为开发语言。
 组件库使用了[Ant-design](https://www.antdv.com/docs/vue/introduce-cn/) 和 [Element](https://element.eleme.cn/#/zh-CN/component/installation)
 
 
