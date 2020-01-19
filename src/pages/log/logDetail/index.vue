@@ -100,9 +100,10 @@ export default {
           endDateTime: this.params.endDateTime
         };
         getLogTableDetailData(params).then(res => {
-          this.tableData = res.msg.dataList.map((i, n) => {
-            i.key = n;
-          });
+          this.tableData = res.msg.dataList.map((i, n) => ({
+            ...i,
+            key : n
+          }));
           this.loading = false;
         });
       }

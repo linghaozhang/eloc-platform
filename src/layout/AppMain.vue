@@ -74,6 +74,7 @@
   import {multiTaskList} from 'utils/constant'
   import {mapGetters} from 'vuex'
   import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN';
+  import {getUserInfo} from 'api'
 
   export default {
     data() {
@@ -104,6 +105,7 @@
       systemConfiguration: () => import('pages/systemConfiguration'),
       taskDetail: () => import('pages/specialService/taskDetail'),
       performTask: () => import('pages/specialService/performTask'),
+      baseSystemConfiguration: () => import('pages/baseSystemConfiguration')
     },
     computed: {
       ...mapGetters([
@@ -127,8 +129,12 @@
       this.$store.dispatch('appMain/createPanes', {panes: [createNewTabData(key)]});
       this.$store.dispatch('appMain/toggleActiveKey', {key});
       this.activeKey = key;
+      this.getUserInfo()
     },
     methods: {
+      getUserInfo(){
+        getUserInfo().then(res=>this.$store.dispatch('appMain/updateUserInfo', {...res}))
+      },
       createTab(e) {
         const panes = [...this.panes];
         let newTab = createNewTabData(e.key);

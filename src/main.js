@@ -35,7 +35,8 @@ import {
   DatePicker,
   LocaleProvider,
   Empty,
-  Switch
+  Switch,
+  TimePicker
 } from 'ant-design-vue';
 
 import {
@@ -44,7 +45,10 @@ import {
   Input as ElInput,
   ButtonGroup as ElButtonGroup,
   Checkbox as ElCheckbox,
-  CheckboxGroup as ElCheckboxGroup
+  CheckboxGroup as ElCheckboxGroup,
+  // TimePicker as ElTimePicker,
+  // Form as ElForm,
+  // FormItem as ElFormItem
 } from 'element-ui';
 
 Vue.component(Button.name, Button);
@@ -56,6 +60,7 @@ Vue.component('v-chart', ECharts);
 Vue.component(DatePicker.RangePicker.name, DatePicker.RangePicker);
 Vue.use(Menu);
 Vue.use(Switch);
+Vue.use(TimePicker);
 Vue.use(LocaleProvider);
 Vue.use(Icon);
 Vue.use(Empty);
@@ -78,6 +83,9 @@ Vue.use(ElInput);
 Vue.use(ElButtonGroup);
 Vue.use(ElCheckbox);
 Vue.use(ElCheckboxGroup);
+// Vue.use(ElTimePicker);
+// Vue.use(ElForm);
+// Vue.use(ElFormItem);
 
 Vue.prototype.$message = message;
 Vue.prototype.$error = (params) => Modal.error({mask: false, centered: true, ...params});

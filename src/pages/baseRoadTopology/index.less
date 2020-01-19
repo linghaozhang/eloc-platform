@@ -16,6 +16,25 @@
     padding:15px;
     box-sizing: border-box;
     overflow-y:auto;
+    .ant-table-thead {
+      tr th {
+        background-color: #2a60fc!important;
+        color: #fff;
+      }
+    }
+    .ant-table-body{
+      margin:0!important;
+    }
+    .ant-table-tbody {
+      tr:nth-child(2n) {
+        background-color: #f0f2f5;
+      }
+    }
+    &-custom{
+      display:flex;
+      justify-content: space-around;
+      align-items: center;
+    }
   }
   &-table-btns{
     margin-bottom:10px;

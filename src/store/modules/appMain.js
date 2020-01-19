@@ -6,13 +6,15 @@ export default {
   state: {
     slideBarCollapsed: false,
     panes:[],
-    activeKey:'homePage'
+    activeKey:'homePage',
+    userInfo:{}
   },
   // 定义reducer
   mutations: {
     TOGGLE_COLLAPSED: state => state.slideBarCollapsed = !state.slideBarCollapsed,
     CREATE_PANES:(state,payload) => state.panes = [...payload.panes],
-    TOGGLE_ACTIVE_KEY:(state,payload) => state.activeKey = payload.key
+    TOGGLE_ACTIVE_KEY:(state,payload) => state.activeKey = payload.key,
+    UPDATE_USER_INFO:(state,payload) => state.userInfo = {...payload}
   },
 
   actions: {
@@ -24,6 +26,9 @@ export default {
     },
     toggleActiveKey({commit},payload){
       commit('TOGGLE_ACTIVE_KEY',payload)
+    },
+    updateUserInfo({commit},payload){
+      commit('UPDATE_USER_INFO',payload)
     }
   }
 }

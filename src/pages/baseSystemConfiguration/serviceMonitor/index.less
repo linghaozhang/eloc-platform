@@ -1,0 +1,25 @@
+.serviceMonitor{
+  background-color: #f0f2f5;
+  height: 100%;
+  &:before{
+    content: "";
+    display: table;
+  }
+  .serviceMonitor-table{
+    height: calc(~"100% - 40px");
+    max-height: calc(~"100% - 40px");
+    width: calc(~"100% - 30px");
+    margin: 20px auto 0;
+    background-color: #fff;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    .ant-table-small{
+      .ant-table-tbody {
+        tr:nth-child(2n) {
+          background-color: inherit!important;
+        }
+      }
+    }
+  }
+}

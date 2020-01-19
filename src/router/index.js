@@ -197,8 +197,17 @@ const routes = [
     children: [{
       path: '/systemConfiguration',
       name: 'systemConfiguration',
-      component: () => import('pages/systemConfiguration'),
-      meta: {title: 'roadTopology'}
+      // component: () => import('pages/systemConfiguration'),
+    }]
+  },
+  {//系统设置基础版
+    path: '/baseSystemConfiguration',
+    component: AppMain,
+    redirect: '/baseSystemConfiguration',
+    children: [{
+      path: '/baseSystemConfiguration',
+      name: 'baseSystemConfiguration',
+      // component: () => import('pages/baseSystemConfiguration'),
     }]
   },
 

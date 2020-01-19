@@ -73,6 +73,9 @@ export const createNewTabData = tabName => {
     case "systemConfiguration":
       title = "系统配置";
       break;
+      case "baseSystemConfiguration":
+      title = "系统配置";
+      break;
     default:
       title = "首页";
   }
@@ -387,6 +390,7 @@ export const getUserOperType = data => {
   return msg;
 };
 
+// 路网拓扑 起始路口出口 终止路口进口
 export const switchCrossExit = data => {
   var msg = "";
   switch (data) {
@@ -417,7 +421,7 @@ export const switchCrossExit = data => {
   }
   return msg;
 };
-
+// 路网拓扑 路段等级
 export const switchCrossLev = data => {
   var msg = "";
   switch (data) {
@@ -436,7 +440,32 @@ export const switchCrossLev = data => {
   }
   return msg;
 };
+// 自定义校验方法
 
+// 正整数校验方法 不校验非空
+export const validateRoadCount = (rule, value, callback)=>{
+  let reg = /^[1-9]+[0-9]*$/;
+  if(!value){
+    callback()
+  }else if(value.length>2){
+    callback(new Error("请最多输入两位正整数"))
+  } else if(reg.test(value)){
+    callback()
+  }else{
+    callback(new Error("请输入正整数"))
+  }
+}
+// 正整数或者小数校验方法 不校验非空
+export const validateFloat = (rule, value, callback)=>{
+  let reg = /^\d+(\.\d{1,2})?$/;
+  if(!value){
+    callback()
+  } else if(reg.test(value)){
+    callback()
+  }else{
+    callback(new Error("请输入正整数或小数"))
+  }
+}
 // special service add rowspan count
 export const addRowSpanCount = data => {
   if (data.length === 1) {
@@ -470,6 +499,27 @@ export const addRowSpanCount = data => {
   return data;
 };
 
+// systeamCinfog add rowspan
+export const sysConfigAddRowspan = data => {
+  let cur;
+  for(let i = 0; i<data.length; i++){
+    cur = data[i];
+    if(data[i].rowspan !== 0 ){
+      data[i].rowspan = 1;
+    }
+    for(let ii = i+1; ii<data.length; ii++){
+      if(cur.serviceName === data[ii].serviceName){
+        if(data[i].rowspan !== 0){
+          data[i].rowspan = data[i].rowspan +1;
+        }
+        data[ii].rowspan = 0
+      }else{
+        break
+      }
+    }
+  }
+  return data
+} 
 /**
  * tabs路由组件替换方法,可模拟路由跳转
  *

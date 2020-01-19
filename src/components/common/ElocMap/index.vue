@@ -1,19 +1,48 @@
 <template>
-  <div id="eloc-map"></div>
+  <div :id="mapId" class="eloc-map"></div>
 </template>
 <script>
+import { getGisParams,setGisParams} from 'api/homePage'
   export default {
     data() {
       return {
         registerState: false
       }
     },
+    props:{
+      mapId:{
+        type:String,
+        required:true
+      }
+    },
     methods: {
-      initElocMap(config, type = 'Baidu') {
-        const mapContext = window.gis.MapFactory.createMap('eloc-map', type, config);
-        window.gis.latLngs2Wkt = this.latLngs2Wkt;
-        this.registerMapDbClick();
-        this.$emit('getMapContext', mapContext);
+      initElocMap(config,mapType) {
+        let mapContext = {}
+        if(config && mapType){
+            mapContext = window.gis.MapFactory.createMap(this.mapId, mapType, config);
+            this.$emit('getMapContext', mapContext);
+            this.registerMapDbClick();
+        }else{
+          return getGisParams()
+          .then(({msg}) => {
+            setGisParams().then(response => {
+//              地图配置项
+              let config = {};
+              if (response.msg && response.msg.centerPointX && response.msg.centerPointY) {
+                config.centerX = response.msg.centerPointX;
+                config.centerY = response.msg.centerPointY;
+              } else {
+                config.centerX = msg.centerPointX;
+                config.centerY = msg.centerPointY;
+              }
+              config.zoom = msg.initZoom;
+              config.zoomControl = false;
+              mapContext = window.gis.MapFactory.createMap(this.mapId, msg.mapType, config);
+              this.$emit('getMapContext', mapContext);
+              this.registerMapDbClick();
+            })
+          })
+        }
       },
       latLngs2Wkt(type, lonlats) {
         let wktStr = '';
@@ -38,7 +67,7 @@
         return wktStr;
       },
       registerMapDbClick() {
-        const map = document.querySelector('#eloc-map');
+        const map = document.querySelector('#'+this.mapId);
         if (!this.registerState) {
           this.registerState = true;
           map.addEventListener('dblclick',  (e)=>{

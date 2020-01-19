@@ -23,3 +23,9 @@ export const addSocketSubscribe = (subscribeUrl, cb) => window.rabbitmq.main.sub
 
 // 获取路口状态
 export const getCrossList = () => http.post('/home/getCrossList')
+
+export const getUserInfo = () => http.post('/getUserInfo.do')
+
+export const addSystemOperLog = (params) => http.post('/system/log/addSystemOperLog',params)
+
+

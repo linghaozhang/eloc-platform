@@ -10,6 +10,7 @@
         @keyup.enter="getCrossInfo"
         @change="$emit('change',$event.target.value)"
         :placeholder="placeholder"
+        :disabled="disabled"
       />
       <i :class="elocSelectIcon"></i>
     </div>
@@ -34,10 +35,16 @@ export default {
     value: {
       type: String
     },
-    placeholder:{
-      type:String,
+    placeholder: {
+      type: String,
       default() {
         return "";
+      }
+    },
+    disabled: {
+      type: Boolean,
+      default() {
+        return false;
       }
     }
   },
@@ -67,13 +74,16 @@ export default {
     };
   },
   mounted() {
-    window.addEventListener("click", () => {
-      this.pickUp();
-    });
+    if (!this.disabled) {
+      window.addEventListener("click", () => {
+        this.pickUp();
+      });
+    }
     this.getCrossInfo();
   },
   methods: {
     click() {
+      if (this.disabled) return false;
       this.foucsState = true;
       this.elocSelectIcon = {
         "el-icon-caret-bottom": true,
@@ -81,7 +91,9 @@ export default {
         "eloc-select-icon-down": false
       };
     },
+    // 下拉收起方法
     pickUp() {
+      if (this.disabled) return false;
       this.foucsState = false;
       this.elocSelectIcon = {
         "el-icon-caret-bottom": true,
@@ -90,18 +102,21 @@ export default {
       };
     },
     getCrossInfo() {
+      if (this.disabled) return false;
       const crossInfo = this.crossInfo;
       getCrossInfoByFuzzySearch({ crossInfo }).then(res => {
         this.treeData = conversionTreeData(res.msg);
       });
     },
     nodeClick(data) {
+      if (this.disabled) return false;
       if (!data.children) {
         this.crossInfo = data.title;
         this.pickUp();
         this.$emit("change", this.crossInfo);
+        this.$emit('nodeChange',this.crossInfo)
       }
-    },
+    }
   }
 };
 </script>  
