@@ -1,11 +1,11 @@
 <template>
   <div class="eloc-login">
     <div class="eloc-login-topbar">
-      <img src="../../assets/eloc-logo.png" alt="">
+      <img src="../../assets/images/eloc-logo.png" alt="">
       <span>智能交通管控平台</span>
     </div>
     <div class="eloc-login-main">
-      <img src="../../assets/mainimglefta.png" alt="">
+      <img src="../../assets/images/mainimglefta.png" alt="">
       <div class="eloc-login-main-form">
         <div class="eloc-login-main-form-welcome">欢迎登录</div>
         <a-form :form="form" @submit="handleSubmit">

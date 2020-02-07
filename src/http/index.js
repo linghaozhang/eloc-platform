@@ -42,7 +42,7 @@ http.defaults.baseURL = 'http://130.3.3.42:8090/ehl-atms-eloc/';
 // http.defaults.baseURL = 'http://127.0.0.1:8090/ehl-atms-eloc/';
 http.defaults.withCredentials = true;
 http.interceptors.response.use(
-  // 请求成功
+  // 请求成功响应拦截
   res => {
     console.log('%c axios response => ','background:#2173cd;color:#fff',res);
     if (res.status !== 200) {

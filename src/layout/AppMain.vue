@@ -208,5 +208,5 @@
 </script>
 <style lang="less">
   @import 'AppMain';
-  @import 'ehlFont/iconFont';
+  @import '../assets/font/iconFont';
 </style>

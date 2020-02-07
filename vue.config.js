@@ -15,7 +15,7 @@ module.exports = {
       .set('http', resolve('src/http'))
       .set('router', resolve('src/router'))
       .set('api', resolve('src/api'))
-      .set('img', resolve('src/assets'))
+      .set('img', resolve('src/assets/images'))
   },
   css: {
     loaderOptions: { // 向 CSS 相关的 loader 传递选项

@@ -9,7 +9,7 @@
           <template slot="title">
             prompt text
           </template>
-          <img src="./../../../assets/ehl-wangluo.png" alt="">
+          <img src="./../../../assets/images/ehl-wangluo.png" alt="">
           <div class="eloc-topbar-left-state">
             <div>
               <span style="color:#22ac38">126</span>/553

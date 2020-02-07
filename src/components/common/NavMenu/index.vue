@@ -1,7 +1,7 @@
 <template>
   <div :class="navClass">
     <div class="navMenu-title">
-      <img src="./../../../assets/logo-big.png" alt="">
+      <img src="./../../../assets/images/logo-big.png" alt="">
       <span :class="textClass">智能交通信号控制系统</span>
     </div>
     <a-menu

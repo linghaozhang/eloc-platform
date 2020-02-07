@@ -8,7 +8,7 @@
 ## 目录说明
 ```
 src > api 封装接口
-src > assets 静态文件
+src > assets/images 静态文件
 src > components 所有封装组件(按page分类，common为通用组件)
 src > http 请求方法封装
 src > layout 项目入口文件
