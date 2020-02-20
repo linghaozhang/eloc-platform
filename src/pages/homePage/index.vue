@@ -487,7 +487,6 @@ export default {
     },
     controllerMode(type, text) {
       const { crossNoList, slcTypeList } = this.areaSelectContainer;
-
       if (crossNoList.length === 0)
         return this.$error({ title: "请选择操作对象" });
       const synchroGuid = randomGuid();

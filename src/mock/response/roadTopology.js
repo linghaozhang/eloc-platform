@@ -1,0 +1,59 @@
+export const getRoadTopologyInfo = {
+	"code":0,
+	"msg":[
+		{
+			"beginCrossExit":"0",
+			"beginCrossId":"1007",
+			"beginCrossName":"津港公路与静水道交口",
+			"beginCrossNo":"1014",
+			"endCrossEntry":"2",
+			"endCrossId":"1006",
+			"endCrossName":"津港公路与外环南路交口",
+			"endCrossNo":"1016",
+			"hasReverse":"",
+			"roadSectionLaneNum":"6",
+			"roadSectionLength":"900",
+			"roadSectionLevel":"0001",
+			"roadSectionNo":"101402101621"
+		},
+],
+	"result":true
+}
+export const getSlcCrossById = {
+	"code":0,
+	"msg":{
+		"area":"370100",
+		"boxKind":"0",
+		"ccuName":"eloc-ccu6",
+		"countdownMode":"1",
+		"countdownStart":"",
+		"crossId":"1005",
+		"crossName":"津港公路与梨双公路交口",
+		"crossNo":"1015",
+		"installDate":1577417934000,
+		"isOnline":"1",
+		"manualPulse":"",
+		"normalPulse":"",
+		"organization":"370100000000",
+		"pictureName":"",
+		"pointX":"117.239714",
+		"pointY":"39.032906",
+		"remark":"",
+		"slcCompany":"ehl",
+		"slcId":"1005",
+		"slcIp":"130.3.3.50",
+		"slcKind":"1",
+		"slcPort":"4000"
+	},
+	"result":true
+}
+export const getCrossBranchDir = {
+	"code":0,
+	"msg":["0","2","4","6"],
+	"result":true
+}
+export const saveTopologyInfo = {
+	"code":0,
+	"msg":null,
+	"result":true
+}
