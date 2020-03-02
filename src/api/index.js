@@ -22,10 +22,10 @@ export const initSocketClient = () => {
 export const addSocketSubscribe = (subscribeUrl, cb) => window.rabbitmq.main.subscribe(subscribeUrl, cb);
 
 // 获取路口状态
-export const getCrossList = () => http.post('/home/getCrossList')
+export const getCrossList = () => http.post('home/getCrossList')
 
-export const getUserInfo = () => http.post('/getUserInfo.do')
+export const getUserInfo = () => http.post('getUserInfo.do')
 
-export const addSystemOperLog = (params) => http.post('/system/log/addSystemOperLog',params)
+export const addSystemOperLog = (params) => http.post('system/log/addSystemOperLog',params)
 
 

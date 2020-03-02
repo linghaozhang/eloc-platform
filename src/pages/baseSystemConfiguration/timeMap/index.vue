@@ -60,6 +60,7 @@
       @cancel="()=>visible=false"
       :destroyOnClose="true"
       @ok="onOk"
+      title="手动校时"
     >
       <div class="batch-operation-title">操作类型</div>
       <div class="batch-operation-object-content">

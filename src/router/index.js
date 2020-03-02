@@ -151,12 +151,18 @@ const routes = [
     path: '/pointEquipment',
     component: AppMain,
     redirect: '/pointEquipment',
-    children: [{
+    children: [
+      {
       path: '/pointEquipment',
       name: 'pointEquipment',
-      component: () => import('pages/pointEquipment'),
+      // component: () => import('pages/pointEquipment'),
       meta: {title: 'pointEquipment'}
-    }]
+    },
+    {
+      path: '/intersection',
+      name: 'intersection',
+    }
+  ]
   },
   {//系统日志
     path: '/systemLog',

@@ -36,7 +36,9 @@ import {
   LocaleProvider,
   Empty,
   Switch,
-  TimePicker
+  TimePicker,
+  Popover,
+  Upload
 } from 'ant-design-vue';
 
 import {
@@ -60,6 +62,8 @@ Vue.component('v-chart', ECharts);
 Vue.component(DatePicker.RangePicker.name, DatePicker.RangePicker);
 Vue.use(Menu);
 Vue.use(Switch);
+Vue.use(Upload);
+Vue.use(Popover);
 Vue.use(TimePicker);
 Vue.use(LocaleProvider);
 Vue.use(Icon);

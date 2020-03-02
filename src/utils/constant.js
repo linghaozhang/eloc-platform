@@ -21,6 +21,9 @@ import TC08 from 'img/TC08.png'
 import TC09 from 'img/TC09.png'
 import TC10 from 'img/TC10.png'
 
+
+export const baseUrl = 'http://130.3.3.42:8090/ehl-atms-eloc/'
+// export const baseUrl = 'http://127.0.0.1:8090/ehl-atms-eloc/'
 // 可多开标签页配置项
 export const multiTaskList = [
   'pointEquipment',

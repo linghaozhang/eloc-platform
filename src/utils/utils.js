@@ -86,6 +86,41 @@ export const createNewTabData = tabName => {
   };
 };
 
+/**
+ * tabs路由组件替换方法,可模拟路由跳转
+ *
+ * @param to 跳转路由
+ * @param params 跳转路由携带数据
+ *
+ */
+export const routeCompReplace = (to, params) => {
+  let panes = [...store.state.appMain.panes];
+  const { activeKey } = store.state.appMain;
+  panes.forEach(i => {
+    if (i.key === activeKey) {
+      i.component = to;
+      if (params) i.params = params;
+    }
+  });
+  store.dispatch("appMain/createPanes", { panes });
+};
+
+/**
+ * 获取tabs路由组件替换跳转后携带数据方法
+ *
+ */
+export const getRouteCompParams = () => {
+  let panes = [...store.state.appMain.panes];
+  const { activeKey } = store.state.appMain;
+  let params;
+  panes.forEach(i => {
+    if (i.key === activeKey) {
+      params = i.params;
+    }
+  });
+  return params;
+};
+
 export const createIconType = id => {
   switch (id) {
     //homePage
@@ -520,40 +555,7 @@ export const sysConfigAddRowspan = data => {
   }
   return data
 } 
-/**
- * tabs路由组件替换方法,可模拟路由跳转
- *
- * @param to 跳转路由
- * @param params 跳转路由携带数据
- *
- */
-export const routeCompReplace = (to, params) => {
-  let panes = [...store.state.appMain.panes];
-  const { activeKey } = store.state.appMain;
-  panes.forEach(i => {
-    if (i.key === activeKey) {
-      i.component = to;
-      if (params) i.params = params;
-    }
-  });
-  store.dispatch("appMain/createPanes", { panes });
-};
 
-/**
- * 获取tabs路由组件替换跳转后携带数据方法
- *
- */
-export const getRouteCompParams = () => {
-  let panes = [...store.state.appMain.panes];
-  const { activeKey } = store.state.appMain;
-  let params;
-  panes.forEach(i => {
-    if (i.key === activeKey) {
-      params = i.params;
-    }
-  });
-  return params;
-};
 
 // 输入文件二进制流，下载文件方法
 export const downloadFile = (fileName, stream) => {

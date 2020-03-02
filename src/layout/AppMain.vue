@@ -99,6 +99,7 @@
       trafficContrast: () => import('pages/trafficContrast'),
       dataAnalysis: () => import('pages/dataAnalysis'),
       pointEquipment: () => import('pages/pointEquipment'),
+      intersection: () => import('pages/pointEquipment/intersection'),
       systemLog: () => import('pages/systemLog'),
       roadTopology: () => import('pages/roadTopology'),
       baseRoadTopology: () => import('pages/baseRoadTopology'),
