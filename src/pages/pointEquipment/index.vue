@@ -545,7 +545,6 @@ export default {
           slcType: "2"
         });
       }
-      console.log('countDownList',countDownList)
       setCountDownParameter(countDownList).then(res=>{
         if(res.msg){
         let errorCross = []

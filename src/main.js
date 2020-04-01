@@ -38,7 +38,8 @@ import {
   Switch,
   TimePicker,
   Popover,
-  Upload
+  Upload,
+  Slider
 } from 'ant-design-vue';
 
 import {
@@ -62,6 +63,7 @@ Vue.component('v-chart', ECharts);
 Vue.component(DatePicker.RangePicker.name, DatePicker.RangePicker);
 Vue.use(Menu);
 Vue.use(Switch);
+Vue.use(Slider);
 Vue.use(Upload);
 Vue.use(Popover);
 Vue.use(TimePicker);

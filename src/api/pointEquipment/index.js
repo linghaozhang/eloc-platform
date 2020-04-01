@@ -20,6 +20,18 @@ export const queryEquipmentByType = (params) => http.post('queryEquipmentByType'
 
 export const CCUQuery = (params) => http.post('systemManage/CCUInfo/CCUQuery',params);
 
+export const queryEquipmentById = (params) => http.post('queryEquipmentById',params);
+
+export const queryDepartmentByDeptId = (params) => http.post('system/microService/queryDepartmentByDeptId',params);
+
+export const checkCross = (params) => http.post('system/device/checkCross',params);
+
+export const deleteCrossInfo = (params) => http.post('system/device/deleteCrossInfo',params);
+
+export const saveCrossInfo = (params) => http.post('system/device/saveCrossInfo',params);
+
+export const getDefaultChannelData = () => http.post('getDefaultChannelData');
+
 export const crossExcel = (params) => http.post('system/device/getCrossDeviceExcel',qs.stringify(params),{
   headers: {
     'Content-Type':'application/x-www-form-urlencoded'

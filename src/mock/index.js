@@ -15,7 +15,7 @@ import {getVipTask,deleteVipTask,deleteVipLine,getVipCross,saveVipTask,getVipLin
 import {getRoadTopologyInfo,getSlcCrossById,getCrossBranchDir,saveTopologyInfo} from './response/roadTopology'
 import {getCaliTime,updateWarningParam,getWarningParam} from './response/systemConfiguation'
 import {getHistoryWarningLogs,getSystemOperLogs} from './response/systemLog'
-import {getArea,getCrossDevice,getOtherParams,getCountDownParameter,queryEquipmentByType,getEquipIdList,CCUQuery} from './response/pointEquipment'
+import {getArea,getCrossDevice,getOtherParams,getCountDownParameter,queryEquipmentByType,getEquipIdList,CCUQuery,queryEquipmentById,queryDepartmentByDeptId,checkCross,saveCrossInfo,getDefaultChannelData} from './response/pointEquipment'
 import {addSystemOperLog} from './response/common'
 
 Mock.setup({
@@ -78,3 +78,8 @@ Mock.mock(/system\/device\/getCountDownParameter/,getCountDownParameter)
 Mock.mock(/\/queryEquipmentByType/,queryEquipmentByType)
 Mock.mock(/\/system\/device\/getEquipIdList/,getEquipIdList)
 Mock.mock(/\/systemManage\/CCUInfo\/CCUQuery/,CCUQuery)
+Mock.mock(/\/queryEquipmentById/,queryEquipmentById)
+Mock.mock(/\/system\/microService\/queryDepartmentByDeptId/,queryDepartmentByDeptId)
+Mock.mock(/\/system\/device\/checkCross/,checkCross)
+Mock.mock(/\/system\/device\/saveCrossInfo/,saveCrossInfo)
+Mock.mock(/getDefaultChannelData/,getDefaultChannelData)

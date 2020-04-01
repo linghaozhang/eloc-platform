@@ -1,0 +1,43 @@
+@roadWayHeight:85%;
+.anchorStyle(){
+  position:absolute;
+  top:0;
+  width:1px;
+  height:1px;
+  background-color:transparent;
+}
+.eloc-exitLane{
+  position:absolute;
+  bottom:100%;
+  width:100%;
+  &-anchor-left{
+    .anchorStyle;
+    left:0;
+  }
+  &-anchor-center{
+    .anchorStyle;
+    left:100%;
+  }
+  &-anchor-right{
+    .anchorStyle;
+    right:-50px;
+  }
+  &-anchor-last{
+    .anchorStyle;
+    right:-100px;
+  }
+  &-way{
+    position: relative;
+    height:20%;
+    width:100%;
+    &:last-child{
+      margin-bottom:0;
+    }
+    margin-bottom:3px;
+    &-item{
+      display:inline-block;
+      width:100%;
+      height:@roadWayHeight;
+    }
+  }
+}

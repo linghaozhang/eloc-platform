@@ -18,9 +18,45 @@ import {
   TC07,
   TC08,
   TC09,
-  TC10
+  TC10,
+  channelDataTmp
 } from "./constant";
 import store from "store";
+
+/**
+ * tabs路由组件替换方法,可模拟路由跳转
+ *
+ * @param to 跳转路由
+ * @param params 跳转路由携带数据
+ *
+ */
+export const routeCompReplace = (to, params) => {
+  let panes = [...store.state.appMain.panes];
+  const { activeKey } = store.state.appMain;
+  panes.forEach(i => {
+    if (i.key === activeKey) {
+      i.component = to;
+      if (params) i.params = params;
+    }
+  });
+  store.dispatch("appMain/createPanes", { panes });
+};
+
+/**
+ * 获取tabs路由组件替换跳转后携带数据方法
+ *
+ */
+export const getRouteCompParams = () => {
+  let panes = [...store.state.appMain.panes];
+  const { activeKey } = store.state.appMain;
+  let params;
+  panes.forEach(i => {
+    if (i.key === activeKey) {
+      params = i.params;
+    }
+  });
+  return params;
+};
 
 export const createNewTabData = tabName => {
   let title = "";
@@ -73,7 +109,7 @@ export const createNewTabData = tabName => {
     case "systemConfiguration":
       title = "系统配置";
       break;
-      case "baseSystemConfiguration":
+    case "baseSystemConfiguration":
       title = "系统配置";
       break;
     default:
@@ -84,41 +120,6 @@ export const createNewTabData = tabName => {
     component: tabName,
     key: tabName
   };
-};
-
-/**
- * tabs路由组件替换方法,可模拟路由跳转
- *
- * @param to 跳转路由
- * @param params 跳转路由携带数据
- *
- */
-export const routeCompReplace = (to, params) => {
-  let panes = [...store.state.appMain.panes];
-  const { activeKey } = store.state.appMain;
-  panes.forEach(i => {
-    if (i.key === activeKey) {
-      i.component = to;
-      if (params) i.params = params;
-    }
-  });
-  store.dispatch("appMain/createPanes", { panes });
-};
-
-/**
- * 获取tabs路由组件替换跳转后携带数据方法
- *
- */
-export const getRouteCompParams = () => {
-  let panes = [...store.state.appMain.panes];
-  const { activeKey } = store.state.appMain;
-  let params;
-  panes.forEach(i => {
-    if (i.key === activeKey) {
-      params = i.params;
-    }
-  });
-  return params;
 };
 
 export const createIconType = id => {
@@ -478,29 +479,29 @@ export const switchCrossLev = data => {
 // 自定义校验方法
 
 // 正整数校验方法 不校验非空
-export const validateRoadCount = (rule, value, callback)=>{
+export const validateRoadCount = (rule, value, callback) => {
   let reg = /^[1-9]+[0-9]*$/;
-  if(!value){
-    callback()
-  }else if(value.length>2){
-    callback(new Error("请最多输入两位正整数"))
-  } else if(reg.test(value)){
-    callback()
-  }else{
-    callback(new Error("请输入正整数"))
+  if (!value) {
+    callback();
+  } else if (value.length > 2) {
+    callback(new Error("请最多输入两位正整数"));
+  } else if (reg.test(value)) {
+    callback();
+  } else {
+    callback(new Error("请输入正整数"));
   }
-}
+};
 // 正整数或者小数校验方法 不校验非空
-export const validateFloat = (rule, value, callback)=>{
+export const validateFloat = (rule, value, callback) => {
   let reg = /^\d+(\.\d{1,2})?$/;
-  if(!value){
-    callback()
-  } else if(reg.test(value)){
-    callback()
-  }else{
-    callback(new Error("请输入正整数或小数"))
+  if (!value) {
+    callback();
+  } else if (reg.test(value)) {
+    callback();
+  } else {
+    callback(new Error("请输入正整数或小数"));
   }
-}
+};
 // special service add rowspan count
 export const addRowSpanCount = data => {
   if (data.length === 1) {
@@ -537,25 +538,24 @@ export const addRowSpanCount = data => {
 // systeamCinfog add rowspan
 export const sysConfigAddRowspan = data => {
   let cur;
-  for(let i = 0; i<data.length; i++){
+  for (let i = 0; i < data.length; i++) {
     cur = data[i];
-    if(data[i].rowspan !== 0 ){
+    if (data[i].rowspan !== 0) {
       data[i].rowspan = 1;
     }
-    for(let ii = i+1; ii<data.length; ii++){
-      if(cur.serviceName === data[ii].serviceName){
-        if(data[i].rowspan !== 0){
-          data[i].rowspan = data[i].rowspan +1;
+    for (let ii = i + 1; ii < data.length; ii++) {
+      if (cur.serviceName === data[ii].serviceName) {
+        if (data[i].rowspan !== 0) {
+          data[i].rowspan = data[i].rowspan + 1;
         }
-        data[ii].rowspan = 0
-      }else{
-        break
+        data[ii].rowspan = 0;
+      } else {
+        break;
       }
     }
   }
-  return data
-} 
-
+  return data;
+};
 
 // 输入文件二进制流，下载文件方法
 export const downloadFile = (fileName, stream) => {
@@ -570,3 +570,250 @@ export const downloadFile = (fileName, stream) => {
   document.body.removeChild(downloadElement); //下载完成移除元素
   window.URL.revokeObjectURL(href); //释放掉blob对象
 };
+
+export const getDirNumber = data => {
+  switch (data) {
+    case "N":
+      return 0;
+    case "E":
+      return 2;
+    case "S":
+      return 4;
+    case "W":
+      return 6;
+    case "NE":
+      return 1;
+    case "SE":
+      return 3;
+    case "SW":
+      return 5;
+    case "NW":
+      return 7;
+  }
+};
+
+export const getDftRoadMsg = dir => {
+  let dftTemp = { ...JSON.parse(JSON.stringify(channelDataTmp))};
+  switch (dir) {
+    case "N":
+      dftTemp.lj = "北";
+      dftTemp.rj = "北";
+      dftTemp.name = "north";
+      dftTemp.number = 0;
+      for (let i = 0; i < 4; i++) {
+        dftTemp.rri[i].jxdz = "北直";
+      }
+      break;
+    case "E":
+      dftTemp.lj = "东";
+      dftTemp.rj = "东";
+      dftTemp.name = "east";
+      dftTemp.number = 2;
+      for (let i = 0; i < 4; i++) {
+        dftTemp.rri[i].jxdz = "东直";
+      }
+      break;
+    case "S":
+      dftTemp.lj = "南";
+      dftTemp.rj = "南";
+      dftTemp.name = "south";
+      dftTemp.number = 4;
+      for (let i = 0; i < 4; i++) {
+        dftTemp.rri[i].jxdz = "南直";
+      }
+      break;
+    case "W":
+      dftTemp.lj = "西";
+      dftTemp.rj = "西";
+      dftTemp.name = "west";
+      dftTemp.number = 6;
+      for (let i = 0; i < 4; i++) {
+        dftTemp.rri[i].jxdz = "西直";
+      }
+      break;
+    case "NE":
+      dftTemp.lj = "东北";
+      dftTemp.rj = "东北";
+      dftTemp.name = "northeast";
+      dftTemp.number = 1;
+      for (let i = 0; i < 4; i++) {
+        dftTemp.rri[i].jxdz = "东直";
+      }
+      break;
+    case "NW":
+      dftTemp.lj = "西北";
+      dftTemp.rj = "西北";
+      dftTemp.name = "northwest";
+      dftTemp.number = 7;
+      for (let i = 0; i < 4; i++) {
+        dftTemp.rri[i].jxdz = "北直";
+      }
+      break;
+    case "SE":
+      dftTemp.lj = "东南";
+      dftTemp.rj = "东南";
+      dftTemp.name = "southeast";
+      dftTemp.number = 3;
+      for (let i = 0; i < 4; i++) {
+        dftTemp.rri[i].jxdz = "东直";
+      }
+      break;
+    case "SW":
+      dftTemp.lj = "西南";
+      dftTemp.rj = "西南";
+      dftTemp.name = "southwest";
+      dftTemp.number = 5;
+      for (let i = 0; i < 4; i++) {
+        dftTemp.rri[i].jxdz = "南直";
+      }
+      break;
+  }
+  return dftTemp;
+};
+
+export const sortChannelData = (a, b) => {
+  const val1 = a.number;
+  const val2 = b.number;
+  if (val1 < val2) {
+    return -1;
+  } else if (val1 > val2) {
+    return 1;
+  } else {
+    return 0;
+  }
+};
+export const calcRoadStyle = dir => {
+  switch (dir) {
+    case 0:
+      return {transform: "rotate(90deg)"};
+    case 1:
+      return {transform: "rotate(135deg)"};
+    case 2:
+      return {transform: "rotate(180deg)"};
+    case 3:
+      return {transform: "rotate(225deg)"};
+    case 4:
+      return {transform: "rotate(270deg)"};
+    case 5:
+      return {transform: "rotate(315deg)"};
+    case 6:
+      return {transform: "rotate(0deg)"};
+    case 7:
+      return {transform: "rotate(45deg)"};
+  }
+};
+
+export const offset = ele => {
+  let box = ele.getBoundingClientRect();
+  let win = window;
+  let docElem = ele.ownerDocument.documentElement
+  return {
+    top: box.top + win.pageYOffset - docElem.clientTop,
+    left: box.left + win.pageXOffset - docElem.clientLeft
+  }
+  // return {
+  //   top:ele.getBoundingClientRect().top,
+  //   left:ele.getBoundingClientRect().left
+  // }
+};
+export const transformRotate = number => {
+  switch (number) {
+    case 0:
+      return {transform:'rotate(-90deg)'};
+    case 1:
+      return {transform:'rotate(-135deg)'};
+    case 2:
+      return {transform:'rotate(-180deg)'};
+    case 3:
+      return {transform:'rotate(-225deg)'};
+    case 4:
+      return {transform:'rotate(-270deg)'};
+    case 5:
+      return {transform:'rotate(-315deg)'};
+    case 6:
+      return {transform:'rotate(0deg)'};
+    case 7:
+      return {transform:'rotate(-45deg)'};
+  }
+}
+
+export const getImportAnchor = (number)=>{
+  const anchorLeft = document.getElementById(
+    `import-anchor-left-${number}`
+  );
+  const anchorCenter = document.getElementById(
+    `import-anchor-center-${number}`
+  );
+  const anchorRight = document.getElementById(
+    `import-anchor-right-${number}`
+  );
+  const anchorLast = document.getElementById(
+    `import-anchor-last-${number}`
+  );
+  let state = store.state.channelization.roadPosition;
+      state.forEach(i => {
+        if (i.number === number) {
+          i.import = {
+            anchorLeft: offset(anchorLeft),
+            anchorCenter: offset(anchorCenter),
+            anchorRight: offset(anchorRight),
+            anchorLast: offset(anchorLast)
+          };
+        }
+      });
+      store.dispatch("channelization/setRoadPosition", {
+        roadPosition: [...state]
+      });
+      const len = store.state.channelization.channelData[0].road.length;
+      let rp = store.state.channelization.roadPosition;
+      if (len === rp.length) {
+        rp.sort((a, b) => a.number - b.number);
+        paintSvg(rp);
+      }
+}
+export const getExitAnchor = (number) => {
+  const anchorLeft = document.getElementById(
+    `exit-anchor-left-${number}`
+  );
+  const anchorCenter = document.getElementById(
+    `exit-anchor-center-${number}`
+  );
+  const anchorRight = document.getElementById(
+    `exit-anchor-right-${number}`
+  );
+  const anchorLast = document.getElementById(
+    `exit-anchor-last-${number}`
+  );
+  let svgObj = {};
+      svgObj.exit = {
+        anchorLeft: offset(anchorLeft),
+        anchorCenter: offset(anchorCenter),
+        anchorRight: offset(anchorRight),
+        anchorLast: offset(anchorLast)
+      },
+      svgObj.number=number;
+      store.dispatch('channelization/setRoadPosition',{roadPosition:[svgObj,...store.state.channelization.roadPosition]})
+}
+export const paintSvg = (rp) => {
+  const ict = offset(document.getElementById("eloc-CM")).top;
+  const icl = offset(document.getElementById("eloc-CM")).left;
+  let svgData = [];
+  for (let i = 0; i < rp.length; i++) {
+    let item = {};
+    let index = i === rp.length - 1 ? 0 : i + 1;
+    item.px1 = rp[i].exit.anchorLeft.left - icl;
+    item.py1 = rp[i].exit.anchorLeft.top - ict;
+    item.px2 = rp[i].exit.anchorLast.left - icl;
+    item.py2 = rp[i].exit.anchorLast.top - ict;
+    item.px5 = rp[i].exit.anchorCenter.left - icl;
+    item.py5 = rp[i].exit.anchorCenter.top - ict;
+    item.px3 = rp[index].import.anchorLast.left - icl;
+    item.py3 = rp[index].import.anchorLast.top - ict;
+    item.px4 = rp[index].import.anchorLeft.left - icl;
+    item.py4 = rp[index].import.anchorLeft.top - ict;
+    item.px6 = rp[index].import.anchorCenter.left - icl;
+    item.py6 = rp[index].import.anchorCenter.top - ict;
+    svgData.push(item);
+  }
+  store.dispatch("channelization/setSvgData", { svgData });
+} 

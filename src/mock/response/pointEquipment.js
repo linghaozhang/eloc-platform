@@ -921,3 +921,740 @@ export const CCUQuery = {
 	],
 	"result":true
 }
+
+export const queryEquipmentById = {
+	"code":0,
+	"msg":{
+		"meid":"37010000000011000003",
+		"equipmentStatusUpdateTime":"2020-02-25 17:56:33.0",
+		"latitude":"38.958735",
+		"roadId":"",
+		"isOnline":"Online",
+		"equipmentId":"37010000000011000003",
+		"equipmentType":"11",
+		"roadName":"",
+		"segcrossCode":"",
+		"equipmentName":"建设路与津港公路交口",
+		"id":"e597f32d220342e0b4dc504f9ee1dcd3",
+		"longitude":"117.334018",
+		"districtName":"津南区",
+		"inRoadSectionId":"",
+		"ip":"130.3.3.100",
+		"manageDept":"370100000000",
+		"inRoadSectionName":"",
+		"segcrossName":"",
+		"equipmentStatus":"Normal",
+		"inInterSectionName":"",
+		"roadType":"",
+		"district":"1201120000",
+		"location":"",
+		"inInterSectionId":"",
+		"updatetime":"2020-02-25 17:56:33.0"
+	},
+	"result":true
+}
+
+export const queryDepartmentByDeptId = {
+	"code":0,
+	"msg":{
+		"bzrs":"",
+		"color":"255,0,0",
+		"commamdOrder":"",
+		"czdh":"85082200",
+		"fzr":"",
+		"fzrdh":"",
+		"fzrsj":"",
+		"gxsj":"2017-07-12 15:35:46",
+		"jgParentId":"370000000000",
+		"jgccbm":"01",
+		"jgcode":"370100000000",
+		"jgid":"370100000000",
+		"jgmc":"交警支队",
+		"jgzn":"",
+		"qtrs":"",
+		"scdz":"济南市公安局交通警察支队",
+		"sid":146,
+		"xzjb":"",
+		"xzqhbm":"",
+		"xzqhmc":"",
+		"yWMS":"",
+		"yzbm":"",
+		"zbdh1":"",
+		"zbdh2":"",
+		"zbdh3":"",
+		"zbmjs":"",
+		"zbsgs":""
+	},
+	"result":true
+}
+
+export const checkCross = {
+	"code":0,
+	"msg":0,
+	"result":true
+}
+
+export const saveCrossInfo = {
+	"code":0,
+	"msg":"20998",
+	"result":true
+}
+// road markings line  道路标线  rml 0 实线虚线 1黄虚线 2 白虚线 
+// rri 第一项 rml为空  rli第一项 rml为空
+export const getDefaultChannelData = {
+  "code": 0,
+  "msg": [
+    {
+      "road": [
+        {
+          "camera": "无",
+          "crossname": "  ",
+          "distance": "",
+          "lj": "北",
+          "median": "2",
+          "name": "north",
+          "nearid": "0",
+          "number": 0,
+          "rj": "北",
+          "rli": [
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+						},
+						{
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+          ],
+          "roadll": "4",
+          "roadname": "无",
+          "roadrl": "4",
+          "rri": [
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "12",
+              "fxclass": "fx2",
+              "jxdz": "北左",
+              "jxid": "6",
+              "pdjcq": "",
+              "zx": "12",
+							"zxclass": "zx2",
+            },
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"0"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"1"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"1"
+            },
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"0"
+            },
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "13",
+              "fxclass": "fx8",
+              "jxdz": "北右",
+              "jxid": "4",
+              "pdjcq": "",
+              "zx": "13",
+							"zxclass": "zx8",
+							"rml":"0"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "13",
+              "fxclass": "fx8",
+              "jxdz": "北右",
+              "jxid": "4",
+              "pdjcq": "",
+              "zx": "13",
+							"zxclass": "zx8",
+							"rml":"0"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "13",
+              "fxclass": "fx8",
+              "jxdz": "北右",
+              "jxid": "4",
+              "pdjcq": "",
+              "zx": "13",
+							"zxclass": "zx8",
+							"rml":"0"
+            },
+          ],
+          "sidewalk": "2",
+          "swTerminal": [
+            {
+              "swjxdz": "东行1",
+              "swjxdzid": "27"
+            }
+          ],
+          "width": 500
+        },
+        {
+          "camera": "无",
+          "crossname": "  ",
+          "distance": "0",
+          "lj": "东",
+          "median": "2",
+          "name": "east",
+          "nearid": "0",
+          "number": 2,
+          "rj": "东",
+          "rli": [
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+						},
+						{
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+          ],
+          "roadll": "4",
+          "roadname": "无",
+          "roadrl": "4",
+					"rri": [
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "12",
+              "fxclass": "fx2",
+              "jxdz": "北左",
+              "jxid": "6",
+              "pdjcq": "",
+              "zx": "12",
+							"zxclass": "zx2",
+            },
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"0"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"1"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"1"
+            },
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"0"
+            },
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "13",
+              "fxclass": "fx8",
+              "jxdz": "北右",
+              "jxid": "4",
+              "pdjcq": "",
+              "zx": "13",
+							"zxclass": "zx8",
+							"rml":"0"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "13",
+              "fxclass": "fx8",
+              "jxdz": "北右",
+              "jxid": "4",
+              "pdjcq": "",
+              "zx": "13",
+							"zxclass": "zx8",
+							"rml":"0"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "13",
+              "fxclass": "fx8",
+              "jxdz": "北右",
+              "jxid": "4",
+              "pdjcq": "",
+              "zx": "13",
+							"zxclass": "zx8",
+							"rml":"0"
+            },
+          ],
+          "sidewalk": "1",
+          "swTerminal": [
+            {
+              "swjxdz": "南行1",
+              "swjxdzid": "29"
+            }
+          ],
+          "width": 500
+        },
+        {
+          "camera": "无",
+          "crossname": "  ",
+          "distance": "",
+          "lj": "南",
+          "median": "2",
+          "name": "south",
+          "nearid": "0",
+          "number": 4,
+          "rj": "南",
+					"rli": [
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+						},
+						{
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+          ],
+          "roadll": "4",
+          "roadname": "无",
+          "roadrl": "4",
+          "rri": [
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "12",
+              "fxclass": "fx2",
+              "jxdz": "北左",
+              "jxid": "6",
+              "pdjcq": "",
+              "zx": "12",
+							"zxclass": "zx2",
+            },
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"0"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"1"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"1"
+            },
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"0"
+            },
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "13",
+              "fxclass": "fx8",
+              "jxdz": "北右",
+              "jxid": "4",
+              "pdjcq": "",
+              "zx": "13",
+							"zxclass": "zx8",
+							"rml":"0"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "13",
+              "fxclass": "fx8",
+              "jxdz": "北右",
+              "jxid": "4",
+              "pdjcq": "",
+              "zx": "13",
+							"zxclass": "zx8",
+							"rml":"0"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "13",
+              "fxclass": "fx8",
+              "jxdz": "北右",
+              "jxid": "4",
+              "pdjcq": "",
+              "zx": "13",
+							"zxclass": "zx8",
+							"rml":"0"
+            },
+          ],
+          "sidewalk": "1",
+          "swTerminal": [
+            {
+              "swjxdz": "西行1",
+              "swjxdzid": "31"
+            }
+          ],
+          "width": 500
+        },
+        {
+          "camera": "无",
+          "crossname": "  ",
+          "distance": "0",
+          "lj": "西",
+          "median": "2",
+          "name": "west",
+          "nearid": "700000000",
+          "number": 6,
+          "rj": "西",
+          "rli": [
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+						},
+						{
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+						},
+						{
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+						{
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+						},
+						{
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+            },
+            {
+              "lczjcq": "",
+							"lfyjcq": "",
+							"rml":"2"
+						},
+          ],
+          "roadll": "4",
+          "roadname": "测试",
+          "roadrl": "4",
+          "rri": [
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "12",
+              "fxclass": "fx2",
+              "jxdz": "北左",
+              "jxid": "6",
+              "pdjcq": "",
+              "zx": "12",
+							"zxclass": "zx2",
+            },
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"0"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"1"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"1"
+            },
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "11",
+              "fxclass": "fx5",
+              "jxdz": "北直",
+              "jxid": "5",
+              "pdjcq": "",
+              "zx": "11",
+							"zxclass": "zx5",
+							"rml":"0"
+            },
+            {
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "13",
+              "fxclass": "fx8",
+              "jxdz": "北右",
+              "jxid": "4",
+              "pdjcq": "",
+              "zx": "13",
+							"zxclass": "zx8",
+							"rml":"0"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "13",
+              "fxclass": "fx8",
+              "jxdz": "北右",
+              "jxid": "4",
+              "pdjcq": "",
+              "zx": "13",
+							"zxclass": "zx8",
+							"rml":"0"
+						},
+						{
+              "cdtz": "wi7-null",
+              "czjcq": "",
+              "fx": "13",
+              "fxclass": "fx8",
+              "jxdz": "北右",
+              "jxid": "4",
+              "pdjcq": "",
+              "zx": "13",
+							"zxclass": "zx8",
+							"rml":"0"
+            },
+          ],
+          "sidewalk": "1",
+          "swTerminal": [
+            {
+              "swjxdz": "北行1",
+              "swjxdzid": "25"
+            }
+          ],
+          "width": 500
+        }
+      ],
+      "roundabout": {
+        "name": "roundabout",
+        "rnum": [],
+        "show": "f"
+      }
+    }
+  ],
+  "result": true
+}

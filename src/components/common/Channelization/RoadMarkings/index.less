@@ -1,0 +1,63 @@
+// 标线宽度
+@roadMarkingsHeight:3px;
+
+.eloc-roadMarkings{
+  position:absolute;
+  top:-3px;
+  width:100%;
+  height:@roadMarkingsHeight;
+  div{
+    display:inline-block;
+    vertical-align: top;
+  }
+  &-dotted{
+    width:45%;
+    height:100%;
+    &-item{
+      width:25%;
+      height:100%;
+      &-fill{
+        height:100%;
+        width:60%;
+        background-color:#fff;
+        border-radius: 2.5px;
+      }
+      &-blank{
+        height:100%;
+        width:40%;
+        background-color:transparent;
+      }
+    }
+  }
+  &-solid{
+    width:55%;
+    height:100%;
+    background-color:#fff;
+    border-top-left-radius :10px ;
+    border-bottom-left-radius :10px ;
+  }
+  &-bus{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    &-item{
+      width:20%;
+      height:100%;
+      float:left;
+      overflow:hidden;
+      &-fill{
+        float:left;
+        width:80%;
+        height:100%;
+        background-color:#FFC200;
+        border-radius: 2.5px;
+      }
+      &-blank{
+        float:left;
+        width:20%;
+        height:100%;
+        background-color:transparent;
+      }
+    }
+  }
+}

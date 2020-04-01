@@ -1,0 +1,96 @@
+@commonBlue: #0066ff;
+@commonWidth: 300px;
+@commonHeight: 300px;
+.crossDirection-style(@width:@commonWidth,@height:@commonHeight) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: @width;
+  height: @height;
+  border-radius: 50%;
+}
+.crossDirection-wrapper {
+  transform:scale(0.85);
+  .crossDirection-style();
+  border: 1px solid @commonBlue;
+  &-comp {
+    .crossDirection-style(98.5%, 98.5%);
+    border: 3px solid @commonBlue;
+  }
+  .crossDirection-circle-blue {
+    .crossDirection-style(95%, 95%);
+    background-color: @commonBlue;
+  }
+  .crossDirection-circle-white {
+    .crossDirection-style(75%, 75%);
+    background-color: #fff;
+  }
+  .crossDirection-small-wrapper {
+    .crossDirection-style(93%, 93%);
+    border: 3px solid @commonBlue;
+    &-comp {
+      .crossDirection-style(98%, 98%);
+      border: 1px solid @commonBlue;
+      .crossDirection-center {
+        width: 35%;
+        height: 35%;
+        background-color: @commonBlue;
+        border-radius: 50%;
+        position: relative;
+        &-inner{
+          border-radius: 50%;
+          width:100%;height:100%;
+          background-color:#0066ff;
+          position:absolute;
+          z-index:10;
+        }
+        &-inner-white {
+          width: 86%;
+          height: 86%;
+          border-radius: 50%;
+          background-color: #fff;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin-left: -43%;
+          margin-top: -43%;
+        }
+        &-inner-blue {
+          width: 90%;
+          height: 90%;
+          border-radius: 50%;
+          background-color: #fff;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin-left: -45%;
+          margin-top: -45%;
+          border: 1px solid @commonBlue;
+          .crossDirection-plus-tran {
+            width: 75%;
+            height: 6px;
+            background-color: #ff0000;
+            border-radius: 4px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -37.5%;
+            margin-top: -3px;
+          }
+          .crossDirection-plus-ver {
+            width: 75%;
+            height: 6px;
+            background-color: #ff0000;
+            border-radius: 4px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -37.5%;
+            margin-top: -3px;
+            transform: rotate(90deg);
+          }
+        }
+      }
+    }
+  }
+}
