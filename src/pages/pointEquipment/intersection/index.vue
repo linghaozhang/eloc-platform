@@ -164,6 +164,9 @@
       <div class="baseCanals-channelWrapper">
         <channelization-map />
       </div>
+      <div class="baseCanals-channelForm">
+        <channelization-form />
+      </div>
     </div>
   </div>
 </template>
@@ -179,7 +182,7 @@ import {
   saveCrossInfo,
   getDefaultChannelData
 } from "api/pointEquipment";
-import { ElocMap,ChannelizationMap } from "components/common";
+import { ElocMap,ChannelizationMap,ChannelizationForm } from "components/common";
 import { baseUrl } from "utils/constant";
 import { getDirNumber,getDftRoadMsg,sortChannelData } from "utils/utils";
 import CrossDirection from "components/pointEquipment/CrossDirection";
@@ -219,7 +222,8 @@ export default {
   components: {
     ElocMap,
     CrossDirection,
-    ChannelizationMap
+    ChannelizationMap,
+    ChannelizationForm
   },
   mounted() {
     this.getEquipOption();

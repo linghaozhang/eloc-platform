@@ -2,7 +2,7 @@
   <div class="eloc-roadTape">
     <sidewalk-island :sidewalkType="sidewalk" :median="median"/>
     <exit-lane :rli="rli" :number="number" />
-    <import-lane :rri="rri" :number="number" />
+    <import-lane :rri="rri" :number="number" :wal="wal" :was="was"/>
     <div :class="roadTape"></div>
   </div>
 </template>
@@ -32,7 +32,15 @@ export default {
     number: {
       type: Number,
       required: true
-    }
+    },
+    was:{
+      type: String,
+      required: true
+    },
+    wal:{
+      type: String,
+      required: true
+    },
   },
   components: {
     ImportLane,

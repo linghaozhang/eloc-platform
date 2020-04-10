@@ -21,6 +21,18 @@ import {
   TC10,
   channelDataTmp
 } from "./constant";
+import {
+  left,
+  right,
+  slr,
+  leftRear,
+  leftRight,
+  rear,
+  straight,
+  straLeft,
+  straRear,
+  straRight
+} from "./constant";
 import store from "store";
 
 /**
@@ -428,7 +440,7 @@ export const getUserOperType = data => {
 
 // 路网拓扑 起始路口出口 终止路口进口
 export const switchCrossExit = data => {
-  var msg = "";
+  let msg = "";
   switch (data) {
     case "0":
       msg = "北";
@@ -593,7 +605,7 @@ export const getDirNumber = data => {
 };
 
 export const getDftRoadMsg = dir => {
-  let dftTemp = { ...JSON.parse(JSON.stringify(channelDataTmp))};
+  let dftTemp = { ...JSON.parse(JSON.stringify(channelDataTmp)) };
   switch (dir) {
     case "N":
       dftTemp.lj = "北";
@@ -685,32 +697,32 @@ export const sortChannelData = (a, b) => {
 export const calcRoadStyle = dir => {
   switch (dir) {
     case 0:
-      return {transform: "rotate(90deg)"};
+      return { transform: "rotate(90deg)" };
     case 1:
-      return {transform: "rotate(135deg)"};
+      return { transform: "rotate(135deg)" };
     case 2:
-      return {transform: "rotate(180deg)"};
+      return { transform: "rotate(180deg)" };
     case 3:
-      return {transform: "rotate(225deg)"};
+      return { transform: "rotate(225deg)" };
     case 4:
-      return {transform: "rotate(270deg)"};
+      return { transform: "rotate(270deg)" };
     case 5:
-      return {transform: "rotate(315deg)"};
+      return { transform: "rotate(315deg)" };
     case 6:
-      return {transform: "rotate(0deg)"};
+      return { transform: "rotate(0deg)" };
     case 7:
-      return {transform: "rotate(45deg)"};
+      return { transform: "rotate(45deg)" };
   }
 };
 
 export const offset = ele => {
   let box = ele.getBoundingClientRect();
   let win = window;
-  let docElem = ele.ownerDocument.documentElement
+  let docElem = ele.ownerDocument.documentElement;
   return {
     top: box.top + win.pageYOffset - docElem.clientTop,
     left: box.left + win.pageXOffset - docElem.clientLeft
-  }
+  };
   // return {
   //   top:ele.getBoundingClientRect().top,
   //   left:ele.getBoundingClientRect().left
@@ -719,82 +731,72 @@ export const offset = ele => {
 export const transformRotate = number => {
   switch (number) {
     case 0:
-      return {transform:'rotate(-90deg)'};
+      return { transform: "rotate(90deg)" };
     case 1:
-      return {transform:'rotate(-135deg)'};
+      return { transform: "rotate(135deg)" };
     case 2:
-      return {transform:'rotate(-180deg)'};
+      return { transform: "rotate(180deg)" };
     case 3:
-      return {transform:'rotate(-225deg)'};
+      return { transform: "rotate(225deg)" };
     case 4:
-      return {transform:'rotate(-270deg)'};
+      return { transform: "rotate(270deg)" };
     case 5:
-      return {transform:'rotate(-315deg)'};
+      return { transform: "rotate(315deg)" };
     case 6:
-      return {transform:'rotate(0deg)'};
+      return { transform: "rotate(0deg)" };
     case 7:
-      return {transform:'rotate(-45deg)'};
+      return { transform: "rotate(45deg)" };
   }
-}
-
-export const getImportAnchor = (number)=>{
-  const anchorLeft = document.getElementById(
-    `import-anchor-left-${number}`
-  );
+};
+// 获取入口车道svg锚点坐标并判断闭合曲线时机
+export const getImportAnchor = number => {
+  const anchorLeft = document.getElementById(`import-anchor-left-${number}`);
   const anchorCenter = document.getElementById(
     `import-anchor-center-${number}`
   );
-  const anchorRight = document.getElementById(
-    `import-anchor-right-${number}`
-  );
-  const anchorLast = document.getElementById(
-    `import-anchor-last-${number}`
-  );
+  const anchorRight = document.getElementById(`import-anchor-right-${number}`);
+  const anchorLast = document.getElementById(`import-anchor-last-${number}`);
   let state = store.state.channelization.roadPosition;
-      state.forEach(i => {
-        if (i.number === number) {
-          i.import = {
-            anchorLeft: offset(anchorLeft),
-            anchorCenter: offset(anchorCenter),
-            anchorRight: offset(anchorRight),
-            anchorLast: offset(anchorLast)
-          };
-        }
-      });
-      store.dispatch("channelization/setRoadPosition", {
-        roadPosition: [...state]
-      });
-      const len = store.state.channelization.channelData[0].road.length;
-      let rp = store.state.channelization.roadPosition;
-      if (len === rp.length) {
-        rp.sort((a, b) => a.number - b.number);
-        paintSvg(rp);
-      }
-}
-export const getExitAnchor = (number) => {
-  const anchorLeft = document.getElementById(
-    `exit-anchor-left-${number}`
-  );
-  const anchorCenter = document.getElementById(
-    `exit-anchor-center-${number}`
-  );
-  const anchorRight = document.getElementById(
-    `exit-anchor-right-${number}`
-  );
-  const anchorLast = document.getElementById(
-    `exit-anchor-last-${number}`
-  );
-  let svgObj = {};
-      svgObj.exit = {
+  state.forEach(i => {
+    if (i.number === number) {
+      i.import = {
         anchorLeft: offset(anchorLeft),
         anchorCenter: offset(anchorCenter),
         anchorRight: offset(anchorRight),
         anchorLast: offset(anchorLast)
-      },
-      svgObj.number=number;
-      store.dispatch('channelization/setRoadPosition',{roadPosition:[svgObj,...store.state.channelization.roadPosition]})
-}
-export const paintSvg = (rp) => {
+      };
+    }
+  });
+  store.dispatch("channelization/setRoadPosition", {
+    roadPosition: [...state]
+  });
+  const len = store.state.channelization.channelData[0].road.length;
+  let rp = store.state.channelization.roadPosition;
+  if (len === rp.length) {
+    rp.sort((a, b) => a.number - b.number);
+    paintSvg(rp);
+  }
+};
+// 获取出口车道svg锚点坐标
+export const getExitAnchor = number => {
+  const anchorLeft = document.getElementById(`exit-anchor-left-${number}`);
+  const anchorCenter = document.getElementById(`exit-anchor-center-${number}`);
+  const anchorRight = document.getElementById(`exit-anchor-right-${number}`);
+  const anchorLast = document.getElementById(`exit-anchor-last-${number}`);
+  let svgObj = {};
+  (svgObj.exit = {
+    anchorLeft: offset(anchorLeft),
+    anchorCenter: offset(anchorCenter),
+    anchorRight: offset(anchorRight),
+    anchorLast: offset(anchorLast)
+  }),
+    (svgObj.number = number);
+  store.dispatch("channelization/setRoadPosition", {
+    roadPosition: [svgObj, ...store.state.channelization.roadPosition]
+  });
+};
+// 绘制svg曲线方法
+export const paintSvg = rp => {
   const ict = offset(document.getElementById("eloc-CM")).top;
   const icl = offset(document.getElementById("eloc-CM")).left;
   let svgData = [];
@@ -816,4 +818,110 @@ export const paintSvg = (rp) => {
     svgData.push(item);
   }
   store.dispatch("channelization/setSvgData", { svgData });
-} 
+};
+
+export const transferLandmark = code => {
+  switch (code) {
+    case "11":
+      return straight;
+    case "12":
+      return left;
+    case "13":
+      return right;
+    case "21":
+      return straLeft;
+    case "22":
+      return straRight;
+    case "23":
+      return leftRight;
+    case "24":
+      return slr;
+    case "31":
+      return rear;
+    case "41":
+      return straRear;
+    case "42":
+      return leftRear;
+  }
+};
+
+export const eleAppendToBody = el => {
+  const body = document.querySelector("body");
+  if (body.append) {
+    body.append(el);
+  } else {
+    body.appendChild(el);
+  }
+};
+
+export const conversionDirNumber = data => {
+  let msg = "";
+  switch (data) {
+    case 0:
+      msg = "N：北";
+      break;
+    case 2:
+      msg = "E：东";
+      break;
+    case 4:
+      msg = "S：南";
+      break;
+    case 6:
+      msg = "W：西";
+      break;
+    case 1:
+      msg = "NE：东北";
+      break;
+    case 3:
+      msg = "SE：东南";
+      break;
+    case 5:
+      msg = "SW：西南";
+      break;
+    case 7:
+      msg = "NW：西北";
+      break;
+  }
+  return msg;
+};
+
+export const addImportLaneNum = () => {
+  let channelData = [...store.state.channelization.channelData];
+  let serialNum = 0;
+  channelData[0].road.forEach(i => {
+    i.rri.forEach(ii => {
+      serialNum = serialNum + 1;
+      ii.serialNum = serialNum;
+    });
+  });
+  store.dispatch("channelization/setChannelData", { channelData });
+  store.dispatch("channelization/setLaneNum", { formLaneNum: "" });
+};
+// 初始化路标选择中公交专用状态
+export const initBusOptions = () => {
+  console.log("init");
+  const road = store.state.channelization.channelData[0].road;
+  const { number, index } = store.state.channelization.selectorDataPosition;
+  road.forEach(i => {
+    if (number === i.number) {
+      const rri = i.rri;
+      if (
+        (index === 0 && rri[1].rml === "1") ||
+        (rri[index + 1] &&
+          rri[index + 1].rml === "1" &&
+          rri[index].rml === "1") ||
+        (!rri[index + 1] && rri[index].rml === "1")
+        ) {
+        store.dispatch("channelization/setSelectorOptionBusStyle", {
+          selectorOptionBusStyle: { backgroundColor: "#2A60FC",color:'#fff' }
+        });
+        store.dispatch("channelization/setSelectorOptionBusActive",{selectorOptionBusActive:true})
+      } else {
+        store.dispatch("channelization/setSelectorOptionBusStyle", {
+          selectorOptionBusStyle: {}
+        });
+        store.dispatch("channelization/setSelectorOptionBusActive",{selectorOptionBusActive:false})
+      }
+    }
+  });
+};

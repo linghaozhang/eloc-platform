@@ -20,7 +20,33 @@ import TC08 from "img/TC08.png";
 import TC09 from "img/TC09.png";
 import TC10 from "img/TC10.png";
 
-export const baseUrl = "http://130.3.3.42:8090/ehl-atms-eloc/";
+import left from "img/left.png";
+import right from "img/right.png";
+import slr from "img/slr.png";
+import leftRear from "img/left-rear.png";
+import leftRight from "img/left-right.png";
+import rear from "img/rear.png";
+import straight from "img/straight.png";
+import straLeft from "img/stra-left.png";
+import straRear from "img/stra-rear.png";
+import straRight from "img/stra-right.png";
+
+export const landmarkData = [
+  {label:straight,value:'11',type:'landmark'},//直行
+  {label:left,value:'12',type:'landmark'},
+  {label:right,value:'13',type:'landmark'},
+  {label:straLeft,value:'21',type:'landmark'},
+  {label:straRight,value:'22',type:'landmark'},
+  {label:leftRight,value:'23',type:'landmark'},
+  {label:slr,value:'24',type:'landmark'},
+  {label:rear,value:'31',type:'landmark'},
+  {label:straRear,value:'41',type:'landmark'},
+  {label:leftRear,value:'42',type:'landmark'},
+  {label:'公交专用',value:'bus',type:'landmarkBus'}
+]
+
+// 基础请求地址
+export const baseUrl = "http://130.3.3.84:8090/ehl-atms-eloc/";
 // export const baseUrl = 'http://127.0.0.1:8090/ehl-atms-eloc/'
 // 可多开标签页配置项
 export const multiTaskList = [
@@ -50,6 +76,7 @@ export const xxbh = [
 ];
 export { PC01, PC02, PC03, PC04, PC05, PC06, PC07, PC08, PC09, PC10 };
 export { TC01, TC02, TC03, TC04, TC05, TC06, TC07, TC08, TC09, TC10 };
+export {left, right, slr, leftRear, leftRight, rear, straight, straLeft, straRear, straRight};
 
 export const channelDataTmp = {
   camera: "",

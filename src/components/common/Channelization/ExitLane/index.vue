@@ -7,7 +7,9 @@
     
     <div class="eloc-exitLane-way-wapper">
       <div class="eloc-exitLane-way" v-for="(i,n) in rli" :key="n">
-        <div class="eloc-exitLane-way-item"></div>
+        <div class="eloc-exitLane-way-item">
+          
+        </div>
         <sidewalk  />
         <road-markings :type="i.rml" v-if="i.rml&&n !== 0" />
       </div>
@@ -18,7 +20,7 @@
 <script>
 import RoadMarkings from "../RoadMarkings";
 import Sidewalk from "../Sidewalk";
-import { getExitAnchor} from "utils/utils";
+import { getExitAnchor,transferLandmark} from "utils/utils";
 import ButtonBox from "../ButtonBox"
 export default {
   props: {
@@ -41,6 +43,7 @@ export default {
   },
   methods: {
     getExitAnchor,
+    transferLandmark
   }
 };
 </script>  

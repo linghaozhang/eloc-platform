@@ -21,9 +21,12 @@
               :rli="i.rli"
               :median="i.median"
               :sidewalk="i.sidewalk"
+              :was="i.was"
+              :wal="i.wal"
             />
           </div>
         </div>
+        <selector ref="elocChannelSelector" />
       </div>
       <svg class="eloc-CM-svg-road" v-for="(i,n) in svgData" :key="n">
         <path
@@ -43,13 +46,15 @@
   </div>
 </template>
 <script>
-import { calcRoadStyle, getImportAnchor, getExitAnchor } from "utils/utils";
+import { calcRoadStyle, getImportAnchor, getExitAnchor ,addImportLaneNum} from "utils/utils";
 import { mapGetters } from "vuex";
 import RoadTape from "../RoadTape";
+import Selector from "../Selector";
 export default {
   name: "eloc-ChannelizationMap",
   components: {
-    RoadTape
+    RoadTape,
+    Selector
   },
   data() {
     return {
@@ -59,7 +64,7 @@ export default {
   },
   directives: {
     drag: {
-      // 指令的定义
+      // 拖拽指令的定义
       bind: (el)=>{
         el.onmousedown = (e)=>{
           let disx = e.pageX - el.offsetLeft;
@@ -83,6 +88,7 @@ export default {
     calcRoadStyle,
     getExitAnchor,
     getImportAnchor,
+    addImportLaneNum,
     adaptiveSize() {
       const road = this.channelData[0].road;
       for (let i = 0; i < road.length; i++) {
@@ -111,17 +117,17 @@ export default {
       e.preventDefault();
       let zoom = this.zoom;
       e.deltaY > 0 ? (zoom -= 0.03) : (zoom += 0.03);
-      if(zoom<0.3 || zoom >1.4){
+      if(zoom<0.3 || zoom >3){
         return false
       }
       this.zoom = zoom;
       this.repaintSVG();
     },
+    
   },
   mounted() {
-    console.log("mapGetters", this.svgData);
-    console.log("channelData", this.channelData);
     this.adaptiveSize();
+    this.addImportLaneNum();
   }
 };
 </script>

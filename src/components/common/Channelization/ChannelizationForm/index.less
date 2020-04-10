@@ -1,0 +1,98 @@
+.eloc-CF {
+  width: 100%;
+  max-height: 100%;
+  overflow-y:auto ;
+  &-title {
+    font-size: 20px;
+    color: #333;
+    padding: 10px;
+    margin: 0 10px 10px 10px;
+    font-weight: bold;
+  }
+  &-content {
+    margin: 0 10px 0 10px;
+    padding-bottom:10px;
+    width: calc(~"100% - 20px");
+    border-bottom: 1px solid #4496d1;
+    &-road {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom:20px;
+      padding-left:10px;
+      &-radio {
+        margin-right: 15px;
+      }
+      &-label {
+        font-size: 16px;
+        color: #333;
+        font-weight: bold;
+        margin-right: 15px;
+      }
+      &-name {
+        font-size: 16px;
+        color: #333;
+        font-weight: bold;
+        min-width: 200px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        &-inner {
+          width: 150px;
+          height: 30px;
+          font-size: 14px;
+          line-height: 26px;
+          border: 2px solid #2a60fc;
+          border-radius: 2px;
+          text-align: center;
+          font-weight: normal;
+          margin-left: 15px;
+        }
+      }
+    }
+    &-form {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      &-vTitle {
+        max-width:25px;
+        padding:10px 8px 10px 5px;
+        font-size: 14px;
+        color:#fff;
+        background-color:#2A60FC;
+        margin-right:15px;
+      }
+      &-light {
+        width: 33%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        box-sizing: border-box;
+        padding-right:15px;
+        border-right:1px solid #4496d1;
+        margin-right:10px;
+      }
+      &-edit{
+        width: 66%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        box-sizing: border-box;
+      }
+    }
+    &-table{
+      width:100%;
+      .ant-table{
+        clear: inherit;
+      }
+      .ant-table-wrapper::after{
+        clear: inherit;
+      }
+      .ant-empty-normal{
+        margin:0;
+      }
+    }
+  }
+}

@@ -1,14 +1,14 @@
 <template>
   <div class="eloc-btn-box">
     <el-button
-      :style="transformRotate(number)"
+    
       type="primary"
       icon="el-icon-plus"
       @click="onAdd"
       circle
     ></el-button>
     <el-button
-      :style="{marginLeft:'0',...transformRotate(number)}"
+      :style="{marginLeft:'0'}"
       icon="el-icon-minus"
       @click="onReudce"
       circle
@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-import { transformRotate, getImportAnchor, getExitAnchor } from "utils/utils";
+import { transformRotate, getImportAnchor, getExitAnchor,addImportLaneNum } from "utils/utils";
 import { rriItem, rliItem } from "utils/constant";
 export default {
   props: {
@@ -36,6 +36,7 @@ export default {
     transformRotate,
     getExitAnchor,
     getImportAnchor,
+    addImportLaneNum,
     onAdd() {
         console.log(this.number)
       let channelData = [...this.$store.state.channelization.channelData];
@@ -59,6 +60,7 @@ export default {
       });
       this.repaintSVG();
       this.$store.dispatch("channelization/setChannelData",{channelData:[...channelData]})
+      this.addImportLaneNum()
     },
     onReudce() {
       let channelData = [...this.$store.state.channelization.channelData];
@@ -79,7 +81,8 @@ export default {
         }
       });
       this.repaintSVG();
-      this.$store.dispatch("channelization/setChannelData",{channelData:[...channelData]})
+      this.$store.dispatch("channelization/setChannelData",{channelData:[...channelData]});
+      this.addImportLaneNum()
     },
     repaintSVG() {
       this.$nextTick(() => {

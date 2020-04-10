@@ -999,8 +999,9 @@ export const saveCrossInfo = {
 	"msg":"20998",
 	"result":true
 }
-// road markings line  道路标线  rml 0 实线虚线 1黄虚线 2 白虚线 
+// road markings line  道路标线  rml 0 白实线虚线 1黄虚线 2 白虚线 
 // rri 第一项 rml为空  rli第一项 rml为空
+// waiting area 等待区 was直行等待区  wal左转等待区  0否  1是
 export const getDefaultChannelData = {
   "code": 0,
   "msg": [
@@ -1015,7 +1016,9 @@ export const getDefaultChannelData = {
           "name": "north",
           "nearid": "0",
           "number": 0,
-          "rj": "北",
+					"rj": "北",
+					"wal":"1",
+					"was":"1",
           "rli": [
             {
               "lczjcq": "",
@@ -1082,7 +1085,7 @@ export const getDefaultChannelData = {
               "pdjcq": "",
               "zx": "11",
 							"zxclass": "zx5",
-							"rml":"0"
+							"rml":"0",
 						},
 						{
               "cdtz": "wi7-null",
@@ -1175,7 +1178,9 @@ export const getDefaultChannelData = {
           "name": "east",
           "nearid": "0",
           "number": 2,
-          "rj": "东",
+					"rj": "东",
+					"wal":"0",
+					"was":"0",
           "rli": [
             {
               "lczjcq": "",
@@ -1336,7 +1341,9 @@ export const getDefaultChannelData = {
           "name": "south",
           "nearid": "0",
           "number": 4,
-          "rj": "南",
+					"rj": "南",
+					"wal":"0",
+					"was":"0",
 					"rli": [
             {
               "lczjcq": "",
@@ -1497,7 +1504,9 @@ export const getDefaultChannelData = {
           "name": "west",
           "nearid": "700000000",
           "number": 6,
-          "rj": "西",
+					"rj": "西",
+					"wal":"0",
+					"was":"0",
           "rli": [
             {
               "lczjcq": "",
