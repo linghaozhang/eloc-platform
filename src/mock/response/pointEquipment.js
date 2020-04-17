@@ -999,9 +999,13 @@ export const saveCrossInfo = {
 	"msg":"20998",
 	"result":true
 }
-// road markings line  道路标线  rml 0 白实线虚线 1黄虚线 2 白虚线 
-// rri 第一项 rml为空  rli第一项 rml为空
-// waiting area 等待区 was直行等待区  wal左转等待区  0否  1是
+//新增字段 road markings line  道路标线  rml 0 白实线虚线 1黄虚线 2 白虚线  3非机划线（单条白实线） 4非机护栏 5非机绿化带
+// rri 最后一项 rml为空  rli最后一项 rml为空
+//新增字段 waiting area 等待区 was直行等待区  wal左转等待区  0否  1是
+//新增值 median：道路中心线类型（0：单黄线，1：双黄线，2：护栏，3：绿化带，4：黄斜线，）
+//新增字段 Non motor vehicle lane 非机动车道  简写 nmvl 0否 1是
+//新增字段 Separate form Non motor vehicle lane 非机动车道隔离形式 sfnmvl 3划线（单条白实线） 4护栏  5绿化带
+//新增字段 earlyTurn 提前调头 0否 1是
 export const getDefaultChannelData = {
   "code": 0,
   "msg": [
@@ -1009,26 +1013,26 @@ export const getDefaultChannelData = {
       "road": [
         {
           "camera": "无",
-          "crossname": "  ",
+          "crossname": "上江北路",
           "distance": "",
           "lj": "北",
-          "median": "2",
+          "median": "3",
           "name": "north",
           "nearid": "0",
           "number": 0,
 					"rj": "北",
 					"wal":"1",
 					"was":"1",
+					"nmvl":"0",
+					"sfnmvl":"3",
+					"earlyTurn":"0",
           "rli": [
-            {
-              "lczjcq": "",
-							"lfyjcq": "",
-            },
             {
               "lczjcq": "",
 							"lfyjcq": "",
 							"rml":"2"
             },
+            
             {
               "lczjcq": "",
 							"lfyjcq": "",
@@ -1058,6 +1062,10 @@ export const getDefaultChannelData = {
               "lczjcq": "",
 							"lfyjcq": "",
 							"rml":"2"
+						},
+						{
+              "lczjcq": "",
+							"lfyjcq": "",
             },
           ],
           "roadll": "4",
@@ -1074,6 +1082,7 @@ export const getDefaultChannelData = {
               "pdjcq": "",
               "zx": "12",
 							"zxclass": "zx2",
+							"rml":"0",
             },
             {
               "cdtz": "wi7-null",
@@ -1157,7 +1166,6 @@ export const getDefaultChannelData = {
               "pdjcq": "",
               "zx": "13",
 							"zxclass": "zx8",
-							"rml":"0"
             },
           ],
           "sidewalk": "2",
@@ -1171,22 +1179,20 @@ export const getDefaultChannelData = {
         },
         {
           "camera": "无",
-          "crossname": "  ",
+          "crossname": "上江东路",
           "distance": "0",
           "lj": "东",
-          "median": "2",
+          "median": "1",
           "name": "east",
           "nearid": "0",
           "number": 2,
 					"rj": "东",
 					"wal":"0",
 					"was":"0",
+					"nmvl":"0",
+					"sfnmvl":"3",
+					"earlyTurn":"0",
           "rli": [
-            {
-              "lczjcq": "",
-							"lfyjcq": "",
-							"rml":"2"
-            },
             {
               "lczjcq": "",
 							"lfyjcq": "",
@@ -1221,6 +1227,10 @@ export const getDefaultChannelData = {
               "lczjcq": "",
 							"lfyjcq": "",
 							"rml":"2"
+						},
+						{
+              "lczjcq": "",
+							"lfyjcq": "",
             },
           ],
           "roadll": "4",
@@ -1237,6 +1247,7 @@ export const getDefaultChannelData = {
               "pdjcq": "",
               "zx": "12",
 							"zxclass": "zx2",
+							"rml":"0"
             },
             {
               "cdtz": "wi7-null",
@@ -1320,7 +1331,6 @@ export const getDefaultChannelData = {
               "pdjcq": "",
               "zx": "13",
 							"zxclass": "zx8",
-							"rml":"0"
             },
           ],
           "sidewalk": "1",
@@ -1334,16 +1344,19 @@ export const getDefaultChannelData = {
         },
         {
           "camera": "无",
-          "crossname": "  ",
+          "crossname": "上江南路",
           "distance": "",
           "lj": "南",
-          "median": "2",
+          "median": "0",
           "name": "south",
           "nearid": "0",
           "number": 4,
 					"rj": "南",
 					"wal":"0",
 					"was":"0",
+					"nmvl":"0",
+					"sfnmvl":"3",
+					"earlyTurn":"0",
 					"rli": [
             {
               "lczjcq": "",
@@ -1383,7 +1396,6 @@ export const getDefaultChannelData = {
             {
               "lczjcq": "",
 							"lfyjcq": "",
-							"rml":"2"
             },
           ],
           "roadll": "4",
@@ -1400,6 +1412,7 @@ export const getDefaultChannelData = {
               "pdjcq": "",
               "zx": "12",
 							"zxclass": "zx2",
+							"rml":"0"
             },
             {
               "cdtz": "wi7-null",
@@ -1483,7 +1496,6 @@ export const getDefaultChannelData = {
               "pdjcq": "",
               "zx": "13",
 							"zxclass": "zx8",
-							"rml":"0"
             },
           ],
           "sidewalk": "1",
@@ -1497,21 +1509,20 @@ export const getDefaultChannelData = {
         },
         {
           "camera": "无",
-          "crossname": "  ",
+          "crossname": "上江西路",
           "distance": "0",
           "lj": "西",
-          "median": "2",
+          "median": "4",
           "name": "west",
           "nearid": "700000000",
           "number": 6,
 					"rj": "西",
 					"wal":"0",
 					"was":"0",
+					"nmvl":"0",
+					"sfnmvl":"3",
+					"earlyTurn":"0",
           "rli": [
-            {
-              "lczjcq": "",
-							"lfyjcq": "",
-						},
 						{
               "lczjcq": "",
 							"lfyjcq": "",
@@ -1546,6 +1557,10 @@ export const getDefaultChannelData = {
               "lczjcq": "",
 							"lfyjcq": "",
 							"rml":"2"
+						},
+						{
+              "lczjcq": "",
+							"lfyjcq": "",
 						},
           ],
           "roadll": "4",
@@ -1562,6 +1577,7 @@ export const getDefaultChannelData = {
               "pdjcq": "",
               "zx": "12",
 							"zxclass": "zx2",
+							"rml":"0"
             },
             {
               "cdtz": "wi7-null",
@@ -1645,10 +1661,9 @@ export const getDefaultChannelData = {
               "pdjcq": "",
               "zx": "13",
 							"zxclass": "zx8",
-							"rml":"0"
             },
           ],
-          "sidewalk": "1",
+          "sidewalk": "2",
           "swTerminal": [
             {
               "swjxdz": "北行1",

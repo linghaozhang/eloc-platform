@@ -99,8 +99,8 @@ Vue.prototype.$success = (params) => Modal.success({mask: false, centered: true,
 Vue.prototype.$confirm = (params) => Modal.confirm({mask: false, centered: true, ...params});
 Vue.prototype.$info = (params) => Modal.info({mask: false, centered: true, ...params});
 
-// if (process.env.NODE_ENV !== 'production') require('./mock')
-require('./mock/release')
+if (process.env.NODE_ENV !== 'production') require('./mock')
+// require('./mock/release')
 new Vue({
   store,
   router,

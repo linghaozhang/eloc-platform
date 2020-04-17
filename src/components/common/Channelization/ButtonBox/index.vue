@@ -1,7 +1,6 @@
 <template>
   <div class="eloc-btn-box">
     <el-button
-    
       type="primary"
       icon="el-icon-plus"
       @click="onAdd"
@@ -38,7 +37,6 @@ export default {
     getImportAnchor,
     addImportLaneNum,
     onAdd() {
-        console.log(this.number)
       let channelData = [...this.$store.state.channelization.channelData];
       channelData[0].road.forEach(i => {
         if (i.number === this.number) {
@@ -46,42 +44,53 @@ export default {
             if (i.rri.length === 8) {
               return false;
             }
-            i.rri.push({...rriItem});
+            if(i.rri.length>3){
+              i.rri.splice(i.rri.length-2,0,{...rriItem});
+            }else{
+              i.rri.splice(0,0,{...rriItem});
+            }
           } else {
             if (i.rli.length === 8) {
               return false;
             }
-            i.rli.unshift({...rliItem});
-            if(i.rli.length>1){
-              i.rli[1].rml = "2";
+            if(i.rli.length>3){
+              i.rli.splice(2,0,{...rliItem});
+            }else{
+              i.rli.push({...rliItem})
             }
+            // if(i.rli.length>1){
+            //   i.rli[1].rml = "2";
+            // }
           }
         }
       });
+      // 重画svg
       this.repaintSVG();
       this.$store.dispatch("channelization/setChannelData",{channelData:[...channelData]})
+      // 重新计算车道序号和带方向的车道序号
       this.addImportLaneNum()
     },
     onReudce() {
       let channelData = [...this.$store.state.channelization.channelData];
-      console.log(this.number)
       channelData[0].road.forEach(i => {
         if (i.number === this.number) {
           if (this.dir === "import") {
             if (i.rri.length === 0) {
               return false;
             }
-            i.rri.splice(i.rri.length - 1, 1);
+            i.rri.splice(i.rri.length - 3, 1);
           } else {
             if (i.rli.length === 0) {
               return false;
             }
-            i.rli.splice(0,1);
+            i.rli.splice(2,1);
           }
         }
       });
+      // 重画svg
       this.repaintSVG();
       this.$store.dispatch("channelization/setChannelData",{channelData:[...channelData]});
+       // 重新计算车道序号和带方向的车道序号
       this.addImportLaneNum()
     },
     repaintSVG() {

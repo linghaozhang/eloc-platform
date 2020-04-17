@@ -99,12 +99,12 @@ export default {
         if (i.number === number) {
           if (index === 0) {
             // 判断是不是第一条车道
-            i.rri[1].rml = this.selectorOptionBusActive ? "1" : "0";
+            i.rri[0].rml = this.selectorOptionBusActive ? "1" : "0";
           } else if(index === i.rri.length-1){
             // 判断是不是最后一条车道
-            i.rri[index].rml = this.selectorOptionBusActive ? "1" : "0";
+            i.rri[index-1].rml = this.selectorOptionBusActive ? "1" : "0";
           }else{
-            this.selectorOptionBusActive?i.rri[index + 1].rml = "1" : i.rri[index + 1].rml = '0'
+            this.selectorOptionBusActive?i.rri[index - 1].rml = "1" : i.rri[index - 1].rml = '0'
             this.selectorOptionBusActive?i.rri[index].rml = "1" : i.rri[index].rml = '0'
           }
         }

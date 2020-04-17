@@ -14,7 +14,8 @@ export default {
     selectorOptionBusStyle:{},
     selectorOptionBusActive:false,
     formRoadDir:'',
-    currentRoadData:{}
+    currentRoadData:{},
+    formConnectionTerminal:"",
   },
   mutations:{
     // 设置渠化svg锚点坐标
@@ -43,6 +44,8 @@ export default {
     SET_FORM_ROAD_DIR:(state,payload)=>state.formRoadDir = payload.formRoadDir,
     // 设置当前选中渠化数据
     SET_CURRENT_ROAD_DATA:(state,payload)=>state.currentRoadData = {...payload.currentRoadData},
+    // 设置接线端子
+    SET_FORM_CONNECT_TERMINAL:(state,payload)=>state.formConnectionTerminal = payload.formConnectionTerminal,
 
   },
   actions:{
@@ -84,6 +87,9 @@ export default {
     },
     setCurrentRoadData({commit},payload){
       commit('SET_CURRENT_ROAD_DATA',payload)
+    },
+    setFormConnectionTerminal({commit},payload){
+      commit('SET_FORM_CONNECT_TERMINAL',payload)
     },
   }
 }

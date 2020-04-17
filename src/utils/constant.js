@@ -46,7 +46,7 @@ export const landmarkData = [
 ]
 
 // 基础请求地址
-export const baseUrl = "http://130.3.3.84:8090/ehl-atms-eloc/";
+export const baseUrl = "http://130.3.3.42:8090/ehl-atms-eloc/";
 // export const baseUrl = 'http://127.0.0.1:8090/ehl-atms-eloc/'
 // 可多开标签页配置项
 export const multiTaskList = [
@@ -88,11 +88,16 @@ export const channelDataTmp = {
   nearid: "0",
   number: 0,
   rj: "北",
+  "wal":"0",
+	"was":"0",
+  "nmvl":"0",
+  "sfnmv":"3",
+  "earlyTurn":"0",
   rli: [
-    { lczjcq: "", lfyjcq: "" },
+    { lczjcq: "", lfyjcq: "",rml: "2" },
     { lczjcq: "", lfyjcq: "", rml: "2" },
     { lczjcq: "", lfyjcq: "", rml: "2" },
-    { lczjcq: "", lfyjcq: "", rml: "2" }
+    { lczjcq: "", lfyjcq: "", }
   ],
   roadll: "4",
   roadname: "",
@@ -107,7 +112,8 @@ export const channelDataTmp = {
       jxid: "11",
       pdjcq: "",
       zx: "11",
-      zxclass: "zx5"
+      zxclass: "zx5",
+      "rml":"0"
     },
     {
       cdtz: "wi7-null",
@@ -143,7 +149,6 @@ export const channelDataTmp = {
       pdjcq: "",
       zx: "11",
       zxclass: "zx5",
-      "rml":"0"
     }
   ],
   sidewalk: "1",
@@ -163,4 +168,42 @@ export const rriItem = {
       zxclass: "zx5",
       rml:"0"
 }
-export const rliItem = { lczjcq: "", lfyjcq: "" }
+export const rliItem = { lczjcq: "", lfyjcq: "",rml:"2" }
+
+// 链接灯组选项
+export const connectionTerminalOptions=[
+  {title:"北左",value:"6",class:"colorB"},
+  {title:"北直",value:"5",class:"colorB"},
+  {title:"北右",value:"4",class:"colorB"},
+  {title:"东左",value:"12",class:"colorB"},
+  {title:"东直",value:"11",class:"colorB"},
+  {title:"东右",value:"10",class:"colorB"},
+  {title:"南左",value:"18",class:"colorB"},
+  {title:"南直",value:"17",class:"colorB"},
+  {title:"南右",value:"16",class:"colorB"},
+  {title:"西左",value:"24",class:"colorB"},
+  {title:"西直",value:"23",class:"colorB"},
+  {title:"西右",value:"22",class:"colorB"},
+
+  {title:"北调",value:"3",class:"colorY"},
+  {title:"北扩",value:"1",class:"colorY"},
+  {title:"北非机动",value:"2",class:"colorY"},
+  {title:"东调",value:"9",class:"colorY"},
+  {title:"东扩",value:"7",class:"colorY"},
+  {title:"东非机动",value:"8",class:"colorY"},
+  {title:"南调",value:"15",class:"colorY"},
+  {title:"南扩",value:"13",class:"colorY"},
+  {title:"南非机动",value:"14",class:"colorY"},
+  {title:"西调",value:"21",class:"colorY"},
+  {title:"西扩",value:"19",class:"colorY"},
+  {title:"西非机动",value:"20",class:"colorY"},
+
+  {title:"北行1",value:"25",class:"colorG"},
+  {title:"北行2",value:"26",class:"colorG"},
+  {title:"东行1",value:"27",class:"colorG"},
+  {title:"东行2",value:"28",class:"colorG"},
+  {title:"南行1",value:"29",class:"colorG"},
+  {title:"南行2",value:"30",class:"colorG"},
+  {title:"西行1",value:"31",class:"colorG"},
+  {title:"西行2",value:"32",class:"colorG"},
+]

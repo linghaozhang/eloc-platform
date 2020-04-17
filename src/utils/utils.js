@@ -748,6 +748,26 @@ export const transformRotate = number => {
       return { transform: "rotate(45deg)" };
   }
 };
+export const transformCommonRotate = number => {
+  switch (number) {
+    case 0:
+      return { transform: "rotate(-90deg)" };
+    case 1:
+      return { transform: "rotate(-90deg)" };
+    case 2:
+      return { transform: "rotate(-180deg)" };
+    case 3:
+      return { transform: "rotate(-90deg)" };
+    case 4:
+      return { transform: "rotate(-270deg)" };
+    case 5:
+      return { transform: "rotate(-90deg)" };
+    case 6:
+      return { transform: "rotate(0deg)" };
+    case 7:
+      return { transform: "rotate(-90deg)" };
+  }
+};
 // 获取入口车道svg锚点坐标并判断闭合曲线时机
 export const getImportAnchor = number => {
   const anchorLeft = document.getElementById(`import-anchor-left-${number}`);
@@ -889,28 +909,31 @@ export const addImportLaneNum = () => {
   let channelData = [...store.state.channelization.channelData];
   let serialNum = 0;
   channelData[0].road.forEach(i => {
-    i.rri.forEach(ii => {
+    i.rri.forEach((ii,nn) => {
       serialNum = serialNum + 1;
       ii.serialNum = serialNum;
+      ii.laneNumDir = switchCrossExit(i.number+'') + (nn + 1)
     });
   });
   store.dispatch("channelization/setChannelData", { channelData });
   store.dispatch("channelization/setLaneNum", { formLaneNum: "" });
+  store.dispatch("channelization/setFormConnectionTerminal", {
+    formConnectionTerminal: ""
+  });
 };
-// 初始化路标选择中公交专用状态
+// 初始化地标选择中公交专用状态
 export const initBusOptions = () => {
-  console.log("init");
   const road = store.state.channelization.channelData[0].road;
   const { number, index } = store.state.channelization.selectorDataPosition;
   road.forEach(i => {
     if (number === i.number) {
       const rri = i.rri;
       if (
-        (index === 0 && rri[1].rml === "1") ||
-        (rri[index + 1] &&
-          rri[index + 1].rml === "1" &&
-          rri[index].rml === "1") ||
-        (!rri[index + 1] && rri[index].rml === "1")
+        // 判断第一条数据
+        (index === 0 && rri[0].rml === "1") ||
+        // 判断最后一条数据
+        (index === rri.length-1 && rri[index - 2].rml === "1") ||
+        (index !== 0 && rri[index - 1].rml === '1' && rri[index].rml === "1")
         ) {
         store.dispatch("channelization/setSelectorOptionBusStyle", {
           selectorOptionBusStyle: { backgroundColor: "#2A60FC",color:'#fff' }

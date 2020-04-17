@@ -23,6 +23,8 @@
               :sidewalk="i.sidewalk"
               :was="i.was"
               :wal="i.wal"
+              :earlyTurn="i.earlyTurn"
+              :crossname="i.crossname"
             />
           </div>
         </div>
@@ -90,6 +92,7 @@ export default {
     getImportAnchor,
     addImportLaneNum,
     adaptiveSize() {
+      // 适配多车道尺寸
       const road = this.channelData[0].road;
       for (let i = 0; i < road.length; i++) {
         const item = road[i];

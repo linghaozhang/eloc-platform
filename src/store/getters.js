@@ -14,5 +14,6 @@ const getters = {
   selectorOptionBusActive:state => state.channelization.selectorOptionBusActive,
   formRoadDir:state => state.channelization.formRoadDir,
   currentRoadData:state => state.channelization.currentRoadData,
+  formConnectionTerminal:state => state.channelization.formConnectionTerminal,
 };
 export default getters

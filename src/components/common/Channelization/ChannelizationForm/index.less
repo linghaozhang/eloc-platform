@@ -38,6 +38,8 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        width:100%;
+        margin-top:15px;
         &-inner {
           width: 150px;
           height: 30px;
@@ -55,31 +57,34 @@
       width: 100%;
       display: flex;
       justify-content: flex-start;
-      align-items: center;
+      align-items: start;
+      padding-top:10px;
+      border-top:1px solid #4496d1;
       &-vTitle {
-        max-width:25px;
-        padding:10px 8px 10px 5px;
-        font-size: 14px;
-        color:#fff;
-        background-color:#2A60FC;
-        margin-right:15px;
+        font-size: 16px;
+        color: #333;
+        padding-bottom: 10px;
+        margin-left:10px;
+        font-weight: bold;
       }
       &-light {
         width: 33%;
         display: flex;
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
         box-sizing: border-box;
-        padding-right:15px;
-        border-right:1px solid #4496d1;
-        margin-right:10px;
+        flex-direction: column;
       }
       &-edit{
         width: 66%;
         display: flex;
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
         box-sizing: border-box;
+        flex-direction: column;
+        padding-left:15px;
+        border-left:1px solid #4496d1;
+        margin-left:10px;
       }
     }
     &-table{
@@ -96,3 +101,13 @@
     }
   }
 }
+.ant-select-dropdown-menu-item.colorB {
+  color: #2A60FC;
+}
+.ant-select-dropdown-menu-item.colorY {
+  color: #ADAD18
+}
+.ant-select-dropdown-menu-item.colorG {
+  color: #00B050
+}
+

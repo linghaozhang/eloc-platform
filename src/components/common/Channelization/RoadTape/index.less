@@ -1,30 +1,117 @@
 .eloc-roadTape{
   position: relative;
   width:100%;
+    // 通用样式
+  .commonTape{
+    position:relative;
+    .sideWalk-island-wapper{
+      width:100%;
+      height:100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-right:-10px;
+    }
+    .grandBar-item-warpper{
+      width:100%;
+      height:100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      position: absolute;
+      top:0;
+      .grandBar-item{
+        width:6px;
+        height:6px;
+        border-radius: 50%;
+        background-color:#fff;
+      }
+    }
+    .commonEarlyTurnClass{
+      position:absolute;
+      width:50px;
+      .et-bottomborder{
+        width:100%;
+        height:2px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: absolute;
+        background-color:#3f3f3f;
+        bottom:1px;
+        &-item{
+          width:20%;
+          height:2px;
+          background-color:#ffff00;
+          border-radius: 3px;
+        }
+      }
+      .et-double-bottomBorder{
+        height:4px;
+        top:-1px;
+      }
+      .et-single-bottomBorder{
+        height:4px;
+      }
+    }
+     // 双黄线 高度绑定middleHeightETcls 的class
+    .middleHeightETcls{
+      height:4px;
+      right:5px;
+      background-color:#3f3f3f;
+    }
+      //单黄线 高度绑定 singleHeightETcls 的class
+    .singleHeightETcls{
+      height:6px;
+      right: 5px;
+      top: -1px;
+      background-color:#3f3f3f;
+    }
+     // 绿化带 黄斜线 高度绑定heightETcls 的class
+    .heightETcls{
+      right:-2px;
+      top:-2px;
+      height:33px;
+      border-right:5px solid #FFFF00;
+      border-top:2px solid #ffff00;
+      background-color:#3f3f3f;
+    }
+  }
+  // 单根黄线
   .singleYellowLine{
     height:4px;
     width:100%;
     background-color:#FFFF00;
   }
+  // 双黄实线
   .doubleYellowLine{
-    height:6px;
+    height:10px;
     width:100%;
     border-top:2px solid #FFFF00;
     border-bottom:2px solid #FFFF00;
     border-right:1px solid #FFFF00;
   }
+  // 绿化带
   .greenBelt{
-    height:16px;
+    height:32px;
     width:100%;
     background-color:#00B050;
     border:2px solid #fff;
     border-left:none;
   }
+  // 黄斜线隔离带
   .medianStrip{
-    height:16px;
+    height:32px;
     width:100%;
     background-color:#ADAD18;
     border:2px solid #fff;
     border-left:none;
+  }
+  .grandBar{
+    height:10px;
+    width:100%;
+    border-top:2px solid #FFFF00;
+    border-bottom:2px solid #FFFF00;
+    border-right:1px solid #FFFF00;
   }
 }
