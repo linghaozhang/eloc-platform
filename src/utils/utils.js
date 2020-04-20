@@ -19,7 +19,7 @@ import {
   TC08,
   TC09,
   TC10,
-  channelDataTmp
+  channelDataTmp,
 } from "./constant";
 import {
   left,
@@ -31,7 +31,7 @@ import {
   straight,
   straLeft,
   straRear,
-  straRight
+  straRight,
 } from "./constant";
 import store from "store";
 
@@ -45,7 +45,7 @@ import store from "store";
 export const routeCompReplace = (to, params) => {
   let panes = [...store.state.appMain.panes];
   const { activeKey } = store.state.appMain;
-  panes.forEach(i => {
+  panes.forEach((i) => {
     if (i.key === activeKey) {
       i.component = to;
       if (params) i.params = params;
@@ -62,18 +62,21 @@ export const getRouteCompParams = () => {
   let panes = [...store.state.appMain.panes];
   const { activeKey } = store.state.appMain;
   let params;
-  panes.forEach(i => {
+  panes.forEach((i) => {
     if (i.key === activeKey) {
       params = i.params;
     }
   });
   return params;
 };
-
-export const createNewTabData = tabName => {
+// 新增页面 需要更改此函数
+export const createNewTabData = (tabName) => {
   let title = "";
   switch (tabName) {
     case "homePage":
+      title = "首页";
+      break;
+    case "baseHomePage":
       title = "首页";
       break;
     case "specialService":
@@ -130,11 +133,11 @@ export const createNewTabData = tabName => {
   return {
     title: title,
     component: tabName,
-    key: tabName
+    key: tabName,
   };
 };
 
-export const createIconType = id => {
+export const createIconType = (id) => {
   switch (id) {
     //homePage
     case "305100":
@@ -174,7 +177,7 @@ export const setCookie = (name, value) => {
   document.cookie = name + "=" + value;
 };
 
-export const switchMarkerImg = mode => {
+export const switchMarkerImg = (mode) => {
   switch (mode) {
     case "C01":
       return { p: PC01, t: TC01 };
@@ -201,7 +204,7 @@ export const switchMarkerImg = mode => {
   }
 };
 
-export const getCrossControlMode = data => {
+export const getCrossControlMode = (data) => {
   let msg = "";
   switch (data) {
     case "C01":
@@ -241,7 +244,7 @@ export const getCrossControlMode = data => {
 export const conversionTreeData = (data, cur = "division") => {
   // 默认按division字段分类数据
   let cache = [];
-  data.forEach(i => {
+  data.forEach((i) => {
     if (cache.indexOf(i[cur]) === -1) cache.push(i[cur]);
   });
   return cache.map((i, n) => {
@@ -249,16 +252,16 @@ export const conversionTreeData = (data, cur = "division") => {
       title: i,
       key: `parent${n}`,
       children: [],
-      img: false
+      img: false,
     };
-    data.forEach(ii => {
+    data.forEach((ii) => {
       if (ii[cur] === i) {
         treeData.children.push({
           title: `${ii.crossId}-${ii.crossName}`,
           key: ii.crossId,
           img: ii.controlMode,
           crossNo: ii.crossNo,
-          parent: `parent${n}`
+          parent: `parent${n}`,
         });
       }
     });
@@ -283,7 +286,7 @@ export const randomGuid = (len = 32) => {
  * @param data
  * @returns {string}
  */
-export const getErrorMsg = data => {
+export const getErrorMsg = (data) => {
   let msg = "";
   switch (data) {
     case 0:
@@ -332,7 +335,7 @@ export const getErrorMsg = data => {
   return msg;
 };
 
-export const transferOperationDesc = code => {
+export const transferOperationDesc = (code) => {
   code = code + "";
   switch (code) {
     case "1":
@@ -354,7 +357,7 @@ export const transferOperationDesc = code => {
   }
 };
 // special service switch level
-export const switchLineLevel = n => {
+export const switchLineLevel = (n) => {
   switch (n) {
     case "1":
       return "一级";
@@ -396,7 +399,7 @@ export const getCrossType = (data, showText = false) => {
   return msg;
 };
 
-export const getUserOperType = data => {
+export const getUserOperType = (data) => {
   var msg = "";
   switch (data) {
     case "U01":
@@ -439,7 +442,7 @@ export const getUserOperType = data => {
 };
 
 // 路网拓扑 起始路口出口 终止路口进口
-export const switchCrossExit = data => {
+export const switchCrossExit = (data) => {
   let msg = "";
   switch (data) {
     case "0":
@@ -470,7 +473,7 @@ export const switchCrossExit = data => {
   return msg;
 };
 // 路网拓扑 路段等级
-export const switchCrossLev = data => {
+export const switchCrossLev = (data) => {
   var msg = "";
   switch (data) {
     case "0001":
@@ -515,7 +518,7 @@ export const validateFloat = (rule, value, callback) => {
   }
 };
 // special service add rowspan count
-export const addRowSpanCount = data => {
+export const addRowSpanCount = (data) => {
   if (data.length === 1) {
     data[0].rowspan = 1;
   }
@@ -548,7 +551,7 @@ export const addRowSpanCount = data => {
 };
 
 // systeamCinfog add rowspan
-export const sysConfigAddRowspan = data => {
+export const sysConfigAddRowspan = (data) => {
   let cur;
   for (let i = 0; i < data.length; i++) {
     cur = data[i];
@@ -583,7 +586,7 @@ export const downloadFile = (fileName, stream) => {
   window.URL.revokeObjectURL(href); //释放掉blob对象
 };
 
-export const getDirNumber = data => {
+export const getDirNumber = (data) => {
   switch (data) {
     case "N":
       return 0;
@@ -604,7 +607,7 @@ export const getDirNumber = data => {
   }
 };
 
-export const getDftRoadMsg = dir => {
+export const getDftRoadMsg = (dir) => {
   let dftTemp = { ...JSON.parse(JSON.stringify(channelDataTmp)) };
   switch (dir) {
     case "N":
@@ -612,6 +615,7 @@ export const getDftRoadMsg = dir => {
       dftTemp.rj = "北";
       dftTemp.name = "north";
       dftTemp.number = 0;
+      dftTemp.swTerminal[0].swjxdz = "东行1";
       for (let i = 0; i < 4; i++) {
         dftTemp.rri[i].jxdz = "北直";
       }
@@ -621,6 +625,7 @@ export const getDftRoadMsg = dir => {
       dftTemp.rj = "东";
       dftTemp.name = "east";
       dftTemp.number = 2;
+      dftTemp.swTerminal[0].swjxdz = "南行1";
       for (let i = 0; i < 4; i++) {
         dftTemp.rri[i].jxdz = "东直";
       }
@@ -630,6 +635,7 @@ export const getDftRoadMsg = dir => {
       dftTemp.rj = "南";
       dftTemp.name = "south";
       dftTemp.number = 4;
+      dftTemp.swTerminal[0].swjxdz = "西行1";
       for (let i = 0; i < 4; i++) {
         dftTemp.rri[i].jxdz = "南直";
       }
@@ -639,6 +645,7 @@ export const getDftRoadMsg = dir => {
       dftTemp.rj = "西";
       dftTemp.name = "west";
       dftTemp.number = 6;
+      dftTemp.swTerminal[0].swjxdz = "北行1";
       for (let i = 0; i < 4; i++) {
         dftTemp.rri[i].jxdz = "西直";
       }
@@ -648,6 +655,7 @@ export const getDftRoadMsg = dir => {
       dftTemp.rj = "东北";
       dftTemp.name = "northeast";
       dftTemp.number = 1;
+      dftTemp.swTerminal[0].swjxdz = "东北行1";
       for (let i = 0; i < 4; i++) {
         dftTemp.rri[i].jxdz = "东直";
       }
@@ -657,6 +665,7 @@ export const getDftRoadMsg = dir => {
       dftTemp.rj = "西北";
       dftTemp.name = "northwest";
       dftTemp.number = 7;
+      dftTemp.swTerminal[0].swjxdz = "西北行1";
       for (let i = 0; i < 4; i++) {
         dftTemp.rri[i].jxdz = "北直";
       }
@@ -666,6 +675,7 @@ export const getDftRoadMsg = dir => {
       dftTemp.rj = "东南";
       dftTemp.name = "southeast";
       dftTemp.number = 3;
+      dftTemp.swTerminal[0].swjxdz = "东南行1";
       for (let i = 0; i < 4; i++) {
         dftTemp.rri[i].jxdz = "东直";
       }
@@ -675,6 +685,7 @@ export const getDftRoadMsg = dir => {
       dftTemp.rj = "西南";
       dftTemp.name = "southwest";
       dftTemp.number = 5;
+      dftTemp.swTerminal[0].swjxdz = "西南行1";
       for (let i = 0; i < 4; i++) {
         dftTemp.rri[i].jxdz = "南直";
       }
@@ -694,7 +705,7 @@ export const sortChannelData = (a, b) => {
     return 0;
   }
 };
-export const calcRoadStyle = dir => {
+export const calcRoadStyle = (dir) => {
   switch (dir) {
     case 0:
       return { transform: "rotate(90deg)" };
@@ -715,20 +726,20 @@ export const calcRoadStyle = dir => {
   }
 };
 
-export const offset = ele => {
+export const offset = (ele) => {
   let box = ele.getBoundingClientRect();
   let win = window;
   let docElem = ele.ownerDocument.documentElement;
   return {
     top: box.top + win.pageYOffset - docElem.clientTop,
-    left: box.left + win.pageXOffset - docElem.clientLeft
+    left: box.left + win.pageXOffset - docElem.clientLeft,
   };
   // return {
   //   top:ele.getBoundingClientRect().top,
   //   left:ele.getBoundingClientRect().left
   // }
 };
-export const transformRotate = number => {
+export const transformRotate = (number) => {
   switch (number) {
     case 0:
       return { transform: "rotate(90deg)" };
@@ -748,7 +759,7 @@ export const transformRotate = number => {
       return { transform: "rotate(45deg)" };
   }
 };
-export const transformCommonRotate = number => {
+export const transformCommonRotate = (number) => {
   switch (number) {
     case 0:
       return { transform: "rotate(-90deg)" };
@@ -769,7 +780,7 @@ export const transformCommonRotate = number => {
   }
 };
 // 获取入口车道svg锚点坐标并判断闭合曲线时机
-export const getImportAnchor = number => {
+export const getImportAnchor = (number) => {
   const anchorLeft = document.getElementById(`import-anchor-left-${number}`);
   const anchorCenter = document.getElementById(
     `import-anchor-center-${number}`
@@ -777,18 +788,18 @@ export const getImportAnchor = number => {
   const anchorRight = document.getElementById(`import-anchor-right-${number}`);
   const anchorLast = document.getElementById(`import-anchor-last-${number}`);
   let state = store.state.channelization.roadPosition;
-  state.forEach(i => {
+  state.forEach((i) => {
     if (i.number === number) {
       i.import = {
         anchorLeft: offset(anchorLeft),
         anchorCenter: offset(anchorCenter),
         anchorRight: offset(anchorRight),
-        anchorLast: offset(anchorLast)
+        anchorLast: offset(anchorLast),
       };
     }
   });
   store.dispatch("channelization/setRoadPosition", {
-    roadPosition: [...state]
+    roadPosition: [...state],
   });
   const len = store.state.channelization.channelData[0].road.length;
   let rp = store.state.channelization.roadPosition;
@@ -798,7 +809,7 @@ export const getImportAnchor = number => {
   }
 };
 // 获取出口车道svg锚点坐标
-export const getExitAnchor = number => {
+export const getExitAnchor = (number) => {
   const anchorLeft = document.getElementById(`exit-anchor-left-${number}`);
   const anchorCenter = document.getElementById(`exit-anchor-center-${number}`);
   const anchorRight = document.getElementById(`exit-anchor-right-${number}`);
@@ -808,15 +819,15 @@ export const getExitAnchor = number => {
     anchorLeft: offset(anchorLeft),
     anchorCenter: offset(anchorCenter),
     anchorRight: offset(anchorRight),
-    anchorLast: offset(anchorLast)
+    anchorLast: offset(anchorLast),
   }),
     (svgObj.number = number);
   store.dispatch("channelization/setRoadPosition", {
-    roadPosition: [svgObj, ...store.state.channelization.roadPosition]
+    roadPosition: [svgObj, ...store.state.channelization.roadPosition],
   });
 };
 // 绘制svg曲线方法
-export const paintSvg = rp => {
+export const paintSvg = (rp) => {
   const ict = offset(document.getElementById("eloc-CM")).top;
   const icl = offset(document.getElementById("eloc-CM")).left;
   let svgData = [];
@@ -840,7 +851,7 @@ export const paintSvg = rp => {
   store.dispatch("channelization/setSvgData", { svgData });
 };
 
-export const transferLandmark = code => {
+export const transferLandmark = (code) => {
   switch (code) {
     case "11":
       return straight;
@@ -865,7 +876,7 @@ export const transferLandmark = code => {
   }
 };
 
-export const eleAppendToBody = el => {
+export const eleAppendToBody = (el) => {
   const body = document.querySelector("body");
   if (body.append) {
     body.append(el);
@@ -874,7 +885,7 @@ export const eleAppendToBody = el => {
   }
 };
 
-export const conversionDirNumber = data => {
+export const conversionDirNumber = (data) => {
   let msg = "";
   switch (data) {
     case 0:
@@ -908,42 +919,46 @@ export const conversionDirNumber = data => {
 export const addImportLaneNum = () => {
   let channelData = [...store.state.channelization.channelData];
   let serialNum = 0;
-  channelData[0].road.forEach(i => {
-    i.rri.forEach((ii,nn) => {
+  channelData[0].road.forEach((i) => {
+    i.rri.forEach((ii, nn) => {
       serialNum = serialNum + 1;
       ii.serialNum = serialNum;
-      ii.laneNumDir = switchCrossExit(i.number+'') + (nn + 1)
+      ii.laneNumDir = switchCrossExit(i.number + "") + (nn + 1);
     });
   });
   store.dispatch("channelization/setChannelData", { channelData });
   store.dispatch("channelization/setLaneNum", { formLaneNum: "" });
   store.dispatch("channelization/setFormConnectionTerminal", {
-    formConnectionTerminal: ""
+    formConnectionTerminal: "",
   });
 };
 // 初始化地标选择中公交专用状态
 export const initBusOptions = () => {
   const road = store.state.channelization.channelData[0].road;
   const { number, index } = store.state.channelization.selectorDataPosition;
-  road.forEach(i => {
+  road.forEach((i) => {
     if (number === i.number) {
       const rri = i.rri;
       if (
         // 判断第一条数据
         (index === 0 && rri[0].rml === "1") ||
         // 判断最后一条数据
-        (index === rri.length-1 && rri[index - 2].rml === "1") ||
-        (index !== 0 && rri[index - 1].rml === '1' && rri[index].rml === "1")
-        ) {
+        (index === rri.length - 1 && rri[index - 2].rml === "1") ||
+        (index !== 0 && rri[index - 1].rml === "1" && rri[index].rml === "1")
+      ) {
         store.dispatch("channelization/setSelectorOptionBusStyle", {
-          selectorOptionBusStyle: { backgroundColor: "#2A60FC",color:'#fff' }
+          selectorOptionBusStyle: { backgroundColor: "#2A60FC", color: "#fff" },
         });
-        store.dispatch("channelization/setSelectorOptionBusActive",{selectorOptionBusActive:true})
+        store.dispatch("channelization/setSelectorOptionBusActive", {
+          selectorOptionBusActive: true,
+        });
       } else {
         store.dispatch("channelization/setSelectorOptionBusStyle", {
-          selectorOptionBusStyle: {}
+          selectorOptionBusStyle: {},
         });
-        store.dispatch("channelization/setSelectorOptionBusActive",{selectorOptionBusActive:false})
+        store.dispatch("channelization/setSelectorOptionBusActive", {
+          selectorOptionBusActive: false,
+        });
       }
     }
   });

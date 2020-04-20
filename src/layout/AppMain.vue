@@ -87,6 +87,7 @@
       NavMenu,
       TopBar,
       homePage: () => import('pages/homePage'),
+      baseHomePage: () => import('pages/baseHomePage'),
       specialService: () => import('pages/specialService'),
       intersectionWorkbench: () => import('pages/intersectionWorkbench'),
       schemeCustomization: () => import('pages/schemeCustomization'),

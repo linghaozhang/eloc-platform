@@ -339,7 +339,6 @@ export default {
     },
     onConnectionTerminalChange(v) {
       const index = this.$store.state.channelization.selectorDataPosition.index;
-      console.log(index);
       const channelData = this.$store.state.channelization.channelData;
       channelData[0].road.forEach(i => {
         if (i.number === Number(this.formRoadDir)) {

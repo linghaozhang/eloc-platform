@@ -24,6 +24,17 @@ const routes = [
       meta: {title: 'homePage'}
     }]
   },
+  {//基础版首页
+    path: '/',
+    component: AppMain,
+    redirect: '/baseHomePage',
+    children: [{
+      path: '/baseHomePage',
+      name: 'baseHomePage',
+      // component: () => import('pages/homePage'),
+      meta: {title: 'baseHomePage'}
+    }]
+  },
   {//特勤管理
     path: '/specialService',
     component: AppMain,
